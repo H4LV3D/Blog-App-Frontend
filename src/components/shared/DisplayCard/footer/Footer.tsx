@@ -81,8 +81,13 @@ function Footer({}: Props) {
       <div className="w-full font-raleway bg-neutral-100 py-20">
         <div className="px-6 lg:px-0 md:container mx-auto xl:w-[1240px]">
           <div className="sm:flex flex-row lg:grid sm:grid-cols-2 mb-8">
-            <div className="w-1/3 lg:w-full">
+            <div className="w-full lg:w-1/3 ">
               <h3 className=" font-[700] text-4xl">Blogger</h3>
+              <p className="text-base lg:text-lg font-[400] mt-2 text-gray-800 lg:pl-6  ">
+                Ready to learn more? Dive into a world of playful, exciting, and
+                interesting experience of my personal journey in the world of
+                Tech.
+              </p>
             </div>
 
             <div className="hidden w-full sm:w-2/3 md:w-full sm:grid grid-cols-3 sm:grid-cols-3 gap-4">
@@ -138,7 +143,7 @@ function Footer({}: Props) {
               <span className=" ">All rights reserved.</span>
               <span className="font-number ">© 2023 </span>
             </div>
-            <div className="flex space-x-2 items-center sm:justify-end">
+            <div className="flex space-x-2 mt-2 items-center sm:justify-end">
               {socials.map((item, index) => (
                 <a
                   href={item.link}
