@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Input from "@/components/shared/Input/Input";
 import PrimaryButton from "@/components/shared/buttons/Primary";
@@ -24,6 +24,7 @@ function SignUpForm({}: Props) {
   const {
     register,
     getValues,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpFormInput>({
@@ -33,6 +34,11 @@ function SignUpForm({}: Props) {
     resolver: yupResolver(signUpSchema),
     mode: "all",
   });
+
+  useEffect(() => {
+    console.log(avatarId);
+    setValue("avatarId", avatarId as number);
+  }, [avatarId]);
 
   const mutation = useMutation({
     mutationFn: async (data: SignUpFormInput) => {
@@ -132,12 +138,18 @@ function SignUpForm({}: Props) {
             </p>
           </div>
           <div className="mt-3">
-            <PrimaryButton
+            {/* <PrimaryButton
               loading={mutation.isPending}
               text="Sign Up"
               type="submit"
               action={() => {}}
-            />
+            /> */}
+            <button
+              onClick={() => console.log(getValues())}
+              className="bg-black text-white h-[3.5rem] w-full text-lg font-[500] rounded-[0.5rem]  "
+            >
+              Sign Up
+            </button>
           </div>
           <div className="mt-2">
             <Link

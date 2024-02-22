@@ -1,18 +1,17 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import "@mantine/core/styles.css";
-// import { Raleway } from "next/font/google";
+import "@mantine/tiptap/styles.css";
 import { ThemeProvider } from "@/contexts/themeContext";
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MantineProvider } from "@mantine/core";
-// import localFont from "next/font/local";
+// import { Raleway } from "next/font/google";
+import localFont from "next/font/local";
 import { Notifications } from "@mantine/notifications";
 
 const queryClient = new QueryClient();
-
-import localFont from "next/font/local";
 
 const clashDisplay = localFont({
   src: [

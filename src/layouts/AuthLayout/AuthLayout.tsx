@@ -1,11 +1,12 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import TetiaryButton from "@/components/shared/buttons/Tetiary";
 import { motion } from "framer-motion";
 import ButtonLoader from "@/components/shared/ButtonLoader/ButtonLoader";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { updateAvatarId } from "@/store/slices/user/UserSlice";
+import Image from "next/image";
 
 type Props = {
   children: React.ReactNode;
@@ -21,7 +22,7 @@ function AuthLayout({ children, form }: Props) {
     if (form === "signup") {
       dispatch(updateAvatarId(Math.floor(Math.random() * 100) + 1));
     } else {
-      dispatch(updateAvatarId(null));
+      avatarId === null ? dispatch(updateAvatarId(null)) : null;
     }
   }, [form]);
 
@@ -37,15 +38,17 @@ function AuthLayout({ children, form }: Props) {
                 <h3 className=" font-[700] text-4xl mb-6">Blogger</h3>
                 <div className="w-[275px] h-[330px] border dark:border-neutral-700 rounded-lg hover:shadow-xl ">
                   {avatarId === null ? (
-                    <div className="w-full h-[330px] flex items-center justify-center">
+                    <div className="w-full h-[330px] flex items-center justify-center relative">
                       <ButtonLoader color="#000" />
                     </div>
                   ) : (
-                    <img
+                    <Image
                       src={`/assets/Bust/peep-${avatarId}.svg`}
                       className="mx-auto"
                       loading="lazy"
-                      alt="A vector illustration of a boy holding a laptop open before him"
+                      width={275}
+                      height={330}
+                      alt="A vector illustration"
                     />
                   )}
                 </div>
@@ -79,14 +82,16 @@ function AuthLayout({ children, form }: Props) {
                         dispatch(updateAvatarId(index + 1));
                       }}
                     >
-                      <img
+                      <Image
                         src={`/assets/Bust/peep-${index + 1}.svg`}
                         loading="lazy"
                         className="mx-auto "
-                        style={{
-                          width: "85px",
-                        }}
+                        width={85}
+                        height={85}
                         alt="A vector illustration of a boy holding a laptop open before him"
+                        onClick={() => {
+                          dispatch(updateAvatarId(index + 1));
+                        }}
                       />
                     </button>
                   ))}
