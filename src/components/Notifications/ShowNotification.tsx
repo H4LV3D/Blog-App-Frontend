@@ -8,7 +8,6 @@ const ShowNotification = (message: string) => {
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
-    progress: undefined,
     progressStyle: { backgroundColor: "#000" },
     theme: "light",
     transition: Bounce,

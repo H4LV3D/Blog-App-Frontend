@@ -37,6 +37,9 @@ const Step3: React.FC<Props> = ({}) => {
   const { password, confirmPassword } = watch();
 
   const onSubmit = async () => {
+    if (password.trim() === "" || confirmPassword.trim() === "") {
+      showNotification({ message: "Please fill in all fields" });
+    }
     if (password !== confirmPassword) {
       const message = { message: "Passwords do not match" };
       showNotification(message);
