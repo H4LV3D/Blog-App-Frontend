@@ -20,7 +20,7 @@ export const useUser = (redirectTo: string) => {
     if (redirectTo && user.isNull) {
       router.push(redirectTo);
     }
-  }, [user]);
+  }, [user, redirectTo, router]);
 
   // Handles user fetching
   useEffect(() => {

@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+
 type Props = {
   heading: {
     line1: string;
@@ -38,8 +40,10 @@ const Banner = ({ heading, text, data }: Props) => {
           <div className="w-[400px] h-[400px] flex-shrink-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-[#e6e6e6] border-opacity-50 rounded-lg"></div>
           <div className="w-[400px] h-[400px] flex-shrink-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-[#e6e6e6] hover:border-[#646464] border-opacity-50 rounded-lg rotate-45 "></div>
           <div className="w-[400px] h-[400px] bg-white flex-shrink-0  border border-[#646464] hover:border-black animate-spin border-opacity-50 -rotate-90 rounded-[50%]"></div>
-          <img
+          <Image
             src={`/assets/Bust/peep-43.svg`}
+            width={300}
+            height={300}
             className="w-[300px] object-cover h-[300px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
             alt="A vector illustration"
           />

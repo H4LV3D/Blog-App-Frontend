@@ -147,7 +147,7 @@ function LoginForm({}: Props) {
               href="/signup"
               className="text-sm font-raleway text-neutral-500 hover:text-black cursor-pointer"
             >
-              Don't have an account? Sign Up.
+              Don&apos;t have an account? Sign Up.
             </Link>
           </div>
         </div>

@@ -16,6 +16,7 @@ import { useMutation } from "@tanstack/react-query";
 import { logout } from "@/utils/requests/auth";
 import { logoutUser } from "@/store/slices/user/UserSlice";
 import { showNotification } from "@mantine/notifications";
+import Image from "next/image";
 
 type Props = {
   nav?: boolean;
@@ -147,8 +148,10 @@ function Header({ nav }: Props) {
               ) : (
                 <div className=" pr-6 flex flex-row items-center space-x-3 ">
                   <div className="">
-                    <img
+                    <Image
                       src={`/assets/Bust/peep-${user?.avatarId}.svg`}
+                      width={48}
+                      height={48}
                       className="h-12 w-12"
                       alt="pic"
                     />

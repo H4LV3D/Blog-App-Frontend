@@ -59,7 +59,7 @@ function SignUpForm({}: Props) {
   return (
     <>
       <p className="text-sm sm:text-base md:text-2xl font-normal md:font-medium text-gray-700 dark:text-neutral-400 font-raleway mb-3">
-        It's Easy, Sign Up.
+        It&apos;s Easy, Sign Up.
       </p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="w-full sm:w-[350px]">
