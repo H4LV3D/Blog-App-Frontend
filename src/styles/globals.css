@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@font-face {
+  font-family: 'clash';
+  font-style: normal;
+  src: url('/fonts/clashDisplay/ClashDisplay-Variable.ttf');
+}
+
+body {
+  font-family: 'clash', sans-serif;
+}
+
+.number {
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 200 !important;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0)
+  }
+
+  to {
+    transform: translateX(calc(0px - 50%));
+  }
+}
+
+.animate-marquee {
+  animation-name: marquee;
+  animation-duration: 180s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.animate-marquee-login {
+  animation-name: marquee;
+  animation-duration: 270s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.marquee-height {
+  height: 90vh !important;
+}
+
+.cursor {
+  background-color: #111;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
