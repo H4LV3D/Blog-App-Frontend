@@ -19,8 +19,8 @@ const SidebarLink: React.FC<Props> = ({ text, href }) => {
     <li onClick={() => dispatch(hideMobileSidebar())} className="mb-2 ">
       <Link
         href={href}
-        className={`flex items-center group relative gap-6 h-12 px-4 rounded-xl ${
-          isActive && "text-[#000] bg-slate-200  font-bold"
+        className={`flex items-center font-[500] group relative gap-6 h-12 px-4 rounded-xl ${
+          isActive && "text-[#000] bg-neutral-100  font-bold"
         }`}
       >
         <p className={`font-base text-sm whitespace-nowrap`}>{text}</p>
