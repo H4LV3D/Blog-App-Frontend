@@ -15,19 +15,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 const MultiStepPasswordRecoveryForm: React.FC = () => {
   const dispatch = useAppDispatch();
   const step = useAppSelector((state) => state.passwordRecoveryStep.step);
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const {
-    register,
     handleSubmit,
     formState: { errors },
-    watch,
-    trigger,
-    control,
   } = useForm<MultiStepPasswordResetFormInputs>({
     resolver: yupResolver(MultiStepPasswordResetFormSchema),
   });
-  const email = watch("email");
-  const code = parseInt(`${watch("code")}`);
 
   const onSubmit: SubmitHandler<MultiStepPasswordResetFormInputs> = async (
     data
@@ -44,39 +37,18 @@ const MultiStepPasswordRecoveryForm: React.FC = () => {
   const showUI = () => {
     switch (step) {
       case 0:
-        return (
-          <Step1
-            register={register}
-            trigger={trigger}
-            errors={errors}
-            email={email}
-          />
-        );
+        return <Step1 />;
 
       case 1:
-        return (
-          <Step2
-            trigger={trigger}
-            control={control}
-            errors={errors}
-            email={email}
-            code={code}
-          />
-        );
+        return <Step2 />;
 
       case 2:
-        return (
-          <Step3
-            register={register}
-            errors={errors}
-            isSubmitting={isSubmitting}
-          />
-        );
+        return <Step3 />;
     }
   };
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      // onSubmit={handleSubmit(onSubmit)}
       className="max-w-[30rem] mx-auto overflow-x-hidden"
     >
       <AnimatePresence mode="wait">{showUI()}</AnimatePresence>

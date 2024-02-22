@@ -13,7 +13,7 @@ import SuccessNotification from "@/components/Notifications/successNotification"
 import ErrorNotification from "@/components/Notifications/ErrorNotification";
 import { useRouter } from "next/navigation";
 
-import { notifications } from "@mantine/notifications";
+import { notifications, showNotification } from "@mantine/notifications";
 import {
   increaseAuthStep,
   selectAuthStep,
@@ -85,13 +85,11 @@ function LoginForm({}: Props) {
       } else {
         router.push("/dashboard");
       }
-      notifications.show({
-        title: "Notification with custom styles",
-        message: "It is default blue",
-        color: "black",
-      });
+      showNotification(data.data.message);
     },
     onError: (error) => {
+      // @ts-ignore
+      showNotification(error.response.data.message);
       ErrorNotification({
         title: "Login Failed",
         // @ts-ignore

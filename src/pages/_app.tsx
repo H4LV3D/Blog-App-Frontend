@@ -11,6 +11,9 @@ import { MantineProvider } from "@mantine/core";
 import localFont from "next/font/local";
 import { Notifications } from "@mantine/notifications";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const queryClient = new QueryClient();
 
 const clashDisplay = localFont({
@@ -53,6 +56,19 @@ export default function App({ Component, pageProps }: AppProps) {
     <main className={clashDisplay.className}>
       <MantineProvider withCssVariables>
         <Notifications position="top-left" zIndex={10077} />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
             <ThemeProvider>
@@ -60,6 +76,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </ThemeProvider>
           </Provider>
         </QueryClientProvider>
+        <ToastContainer />
       </MantineProvider>
     </main>
   );

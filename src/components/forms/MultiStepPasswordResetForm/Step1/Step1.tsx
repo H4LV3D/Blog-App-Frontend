@@ -1,56 +1,81 @@
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
-import {
-  UseFormRegister,
-  UseFormTrigger,
-  FieldErrorsImpl,
-  set,
-} from "react-hook-form";
+import React, { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import ButtonLoader from "@/components/shared/ButtonLoader/ButtonLoader";
-import { increasePasswordRecoveryStep } from "@/store/slices/passwordRecoveryStep/passwordRecoveryStepSlice";
+import {
+  increasePasswordRecoveryStep,
+  setPasswordRecoveryStepSelectedEmail,
+} from "@/store/slices/passwordRecoveryStep/passwordRecoveryStepSlice";
 import { requestPasswordReset } from "@/utils/requests/auth";
-import { MultiStepPasswordResetFormInputs } from "../MultiStepPasswordResetForm.interface";
 import PrimaryButton from "@/components/shared/buttons/Primary";
 import SecondaryButton from "@/components/shared/buttons/Secondary";
+import { useMutation } from "@tanstack/react-query";
+import { getAvatarId } from "@/utils/requests/auth";
+import { updateAvatarId } from "@/store/slices/user/UserSlice";
+import { toast, Bounce } from "react-toastify";
+import ShowNotification from "@/components/Notifications/ShowNotification";
 
-interface Props {
-  register: UseFormRegister<MultiStepPasswordResetFormInputs>;
-  trigger: UseFormTrigger<MultiStepPasswordResetFormInputs>;
-  errors: FieldErrorsImpl<MultiStepPasswordResetFormInputs>;
+interface Props {}
+
+interface FormInput {
   email: string;
 }
 
-const Step1: React.FC<Props> = ({ register, trigger, errors, email }) => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
+const Step1: React.FC = () => {
+  const {
+    register,
+    trigger,
+    watch,
+    formState: { errors },
+  } = useForm<FormInput>();
 
-  //   const handleNext = async () => {
-  //     try {
-  //       const isValid = await trigger(["email"]);
-  //       if (!isValid) return;
-  //       setLoading(true);
-  //       const res = await requestPasswordReset(email);
-  //       dispatch(increasePasswordRecoveryStep());
-  //     } catch (error: any) {
-  //       if (error.code === "ERR_NETWORK") {
-  //         console.log(error?.message);
-  //       } else {
-  //         console.log(error.response?.data?.message);
-  //       }
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
+  const dispatch = useAppDispatch();
+  const email = watch("email");
+
+  const avatarMutation = useMutation({
+    mutationFn: async (email: string) => {
+      const res = await getAvatarId(email);
+      return res;
+    },
+    onSuccess: (data) => {
+      dispatch(updateAvatarId(data.data.avatarId));
+    },
+    onError: (error) => {
+      dispatch(updateAvatarId(null));
+    },
+  });
+
+  useEffect(() => {
+    const isEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (isEmail.test(email)) {
+      avatarMutation.mutate(email);
+      dispatch(setPasswordRecoveryStepSelectedEmail(email));
+    } else {
+      dispatch(updateAvatarId(null));
+    }
+  }, [email, dispatch]);
 
   const handleNext = async () => {
-    // setLoading(true);
     const isValid = await trigger(["email"]);
-
-    console.log("hello there", isValid);
-    dispatch(increasePasswordRecoveryStep());
+    if (!isValid) return;
+    mutation.mutate();
   };
+
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const res = await requestPasswordReset(email);
+      return res;
+    },
+    onSuccess: (data) => {
+      ShowNotification(data.data.message);
+      dispatch(increasePasswordRecoveryStep());
+    },
+    onError: (error) => {
+      console.log(error);
+      // @ts-ignore
+      ShowNotification(error.response.data.message);
+    },
+  });
 
   return (
     <>
@@ -85,7 +110,7 @@ const Step1: React.FC<Props> = ({ register, trigger, errors, email }) => {
 
       <div className="grid grid-cols-1 gap-y-4">
         <PrimaryButton
-          loading={loading}
+          loading={mutation.isPending}
           text="Send"
           type="button"
           action={handleNext}

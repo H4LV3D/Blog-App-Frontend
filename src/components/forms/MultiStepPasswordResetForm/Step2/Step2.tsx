@@ -1,13 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import ButtonLoader from "@/components/shared/ButtonLoader/ButtonLoader";
-import {
-  Controller,
-  UseFormRegister,
-  UseFormTrigger,
-  FieldErrorsImpl,
-  Control,
-} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { resendOtp, verifyOtp } from "@/utils/requests/auth";
 import { useAppSelector } from "@/hooks/useAppSelector";
@@ -17,19 +11,34 @@ import {
 } from "@/store/slices/passwordRecoveryStep/passwordRecoveryStepSlice";
 import { MultiStepPasswordResetFormInputs } from "../MultiStepPasswordResetForm.interface";
 import PrimaryButton from "@/components/shared/buttons/Primary";
+import { useMutation } from "@tanstack/react-query";
+import { showNotification } from "@mantine/notifications";
 
-interface Props {
-  trigger: UseFormTrigger<MultiStepPasswordResetFormInputs>;
-  control: Control<MultiStepPasswordResetFormInputs, any>;
-  errors: FieldErrorsImpl<MultiStepPasswordResetFormInputs>;
+interface Props {}
+
+interface FormInput {
   email: string;
   code: number;
 }
 
-const Step2: React.FC<Props> = ({ trigger, control, errors, email, code }) => {
+const Step2: React.FC<Props> = ({}) => {
+  const {
+    trigger,
+    watch,
+    formState: { errors },
+    setValue,
+  } = useForm<MultiStepPasswordResetFormInputs>();
+
   const [loading, setLoading] = useState<boolean>(false);
   const [resendingEmail, setResendingEmail] = useState<boolean>(false);
-  const [otpInputs, setOtpInputs] = useState<string[]>(["", "", "", ""]);
+  const [otpInputs, setOtpInputs] = useState<string[]>([
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ]);
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
   const selectedEmail = useAppSelector(
     (state) => state.passwordRecoveryStep.selectedEmail
@@ -42,9 +51,10 @@ const Step2: React.FC<Props> = ({ trigger, control, errors, email, code }) => {
       const newOtpInputs = [...otpInputs];
       newOtpInputs[index] = value;
       setOtpInputs(newOtpInputs);
+      const newCode = Number(newOtpInputs.join(""));
+      setValue("code", newCode);
 
-      if (index < 3) {
-        // Auto-focus on the next input box
+      if (index < 5) {
         inputRefs.current[index + 1]?.focus();
       }
     }
@@ -59,29 +69,10 @@ const Step2: React.FC<Props> = ({ trigger, control, errors, email, code }) => {
     }
   };
 
-  //   const handleNext = async () => {
-  //     try {
-  //       const isValid = await trigger(["code"]);
-  //       if (!isValid) return;
-  //       setLoading(true);
-  //       const res = await verifyOtp(email, code);
-  //       dispatch(increasePasswordRecoveryStep());
-  //     } catch (error: any) {
-  //       if (error.code === "ERR_NETWORK") {
-  //         console.log(error?.message);
-  //       } else {
-  //         console.log(error.response?.data?.message);
-  //       }
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
   const handleClick = async () => {
     try {
       setResendingEmail(true);
       const res = await resendOtp(selectedEmail);
-      console.log(res.data.message);
     } catch {
     } finally {
       setResendingEmail(false);
@@ -90,9 +81,26 @@ const Step2: React.FC<Props> = ({ trigger, control, errors, email, code }) => {
 
   const handleNext = async () => {
     const isValid = await trigger(["code"]);
-    console.log(isValid);
-    dispatch(increasePasswordRecoveryStep());
+    if (!isValid) return;
+    mutation.mutate();
   };
+
+  const code = watch("code");
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const res = await verifyOtp(selectedEmail, code);
+      return res;
+    },
+    onSuccess: (data) => {
+      showNotification(data.data.message);
+      dispatch(increasePasswordRecoveryStep());
+    },
+    onError: (error) => {
+      console.log(error);
+      // @ts-ignore
+      showNotification(error.response.data.message);
+    },
+  });
 
   return (
     <>
@@ -103,7 +111,7 @@ const Step2: React.FC<Props> = ({ trigger, control, errors, email, code }) => {
         </p>
       </div>
       <div className="grid gap-[2rem] w-full sm:min-w-[350px] mb-8">
-        <div className="w-full grid place-items-center grid-cols-4 gap-x-3">
+        <div className="w-full flex items-center  gap-x-2">
           {otpInputs.map((value, index) => (
             <input
               key={index}
@@ -111,7 +119,7 @@ const Step2: React.FC<Props> = ({ trigger, control, errors, email, code }) => {
               name={`otp-${index}`}
               id={`otp-${index}`}
               maxLength={1} // Limit input to one character
-              className="h-[4rem] w-[4rem] border focus:border-black rounded-lg text-[2rem] text-[#000] flex items-center justify-center pl-[1.5rem] outline-none"
+              className="h-[3rem] w-[3rem] border focus:border-black rounded-lg text-[2rem] text-[#000] flex items-center justify-center pl-[1rem] outline-none"
               value={value}
               onChange={(e) => handleInputChange(index, e.target.value)}
               onKeyDown={(e) => handleKeyDown(index, e)}
@@ -131,22 +139,20 @@ const Step2: React.FC<Props> = ({ trigger, control, errors, email, code }) => {
             <span>Resend</span>
           </button>
         </p>
-        <div className="grid place-items-center mb-[1.25rem]">
+        <div className="grid place-items-center gap-y-3 mb-[1.25rem]">
           <PrimaryButton
             loading={loading}
             text="Verify"
             type="button"
             action={handleNext}
           />
-        </div>
-        <div className="grid place-items-center">
           <button
             type="button"
             onClick={() => {
               dispatch(decreasePasswordRecoveryStep());
             }}
             disabled={loading}
-            className="h-[3rem] w-full max-w-[21rem]  bg-transparent border border-neutral-500 text-neutral-500 hover:text-[#0e0e0e] hover:border-[#0e0e0e] font-semibold rounded-lg"
+            className="h-[3.5rem] w-full bg-transparent border border-neutral-500 text-neutral-500 hover:text-[#0e0e0e] hover:border-[#0e0e0e] font-semibold rounded-lg"
           >
             <span>Back</span>
           </button>
