@@ -37,9 +37,9 @@ const Banner = ({ heading, text, data }: Props) => {
       </div>
       <div className=" h-[85vh] w-full flex justify-center items-center relative">
         <div className="w-[500px] h-[500px] rounded-lg mt-20 grid place-items-center relative  ">
-          <div className="w-[400px] h-[400px] flex-shrink-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-[#e6e6e6] border-opacity-50 rounded-lg"></div>
-          <div className="w-[400px] h-[400px] flex-shrink-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-[#e6e6e6] hover:border-[#646464] border-opacity-50 rounded-lg rotate-45 "></div>
-          <div className="w-[400px] h-[400px] bg-white flex-shrink-0  border border-[#646464] hover:border-black animate-spin border-opacity-50 -rotate-90 rounded-[50%]"></div>
+          <div className="w-[400px] h-[400px] flex-shrink-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-[#646464] border-opacity-10 rounded-lg"></div>
+          <div className="w-[400px] h-[400px] flex-shrink-0 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border border-[#646464] hover:border-[#646464] border-opacity-10 rounded-lg rotate-45 "></div>
+          <div className="w-[400px] h-[400px] bg-white flex-shrink-0  border border-[#646464] hover:border-black animate-spin border-opacity-10 -rotate-90 rounded-[50%]"></div>
           <Image
             src={`/assets/Bust/peep-43.svg`}
             width={300}

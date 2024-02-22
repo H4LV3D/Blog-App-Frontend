@@ -79,10 +79,10 @@ function Footer({}: Props) {
   return (
     <>
       <div className="w-full font-raleway bg-neutral-100 py-20">
-        <div className="px-6 lg:px-0 md:container mx-auto xl:w-[950px]">
+        <div className="px-6 lg:px-0 md:container mx-auto xl:w-[1240px]">
           <div className="sm:flex flex-row lg:grid sm:grid-cols-2 mb-8">
             <div className="w-1/3 lg:w-full">
-              <h3 className="font-oleo font-normal text-4xl">Blogger</h3>
+              <h3 className=" font-[700] text-4xl">Blogger</h3>
             </div>
 
             <div className="hidden w-full sm:w-2/3 md:w-full sm:grid grid-cols-3 sm:grid-cols-3 gap-4">
