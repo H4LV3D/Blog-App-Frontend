@@ -1,29 +1,36 @@
 import React, { useEffect, useRef } from "react";
 import SidebarLink from "./SidebarLink/SidebarLink";
 import { motion } from "framer-motion";
-import { hideMobileSidebar } from "../../../store/slices/mobileSidebar/mobileSidebarSlice";
-import { useAppDispatch } from "../../../hooks/useAppDispatch";
+import { hideMobileSidebar } from "@/store/slices/mobileSidebar/mobileSidebarSlice";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { logoutUser } from "@/store/slices/user/UserSlice";
+import { useMutation } from "@tanstack/react-query";
+import { logout } from "@/utils/requests/auth";
+import { showNotification } from "@mantine/notifications";
+import router from "next/router";
+import ButtonLoader from "../ButtonLoader/ButtonLoader";
 
 const MobileSidebar: React.FC = () => {
   const dispatch = useAppDispatch();
   const path = usePathname();
   const links = [
     {
+      page: "Home",
+      link: "/",
+    },
+    {
+      page: "Blogs",
+      link: "/bloga",
+    },
+    {
       page: "Dashboard",
       link: "/dashboard",
     },
     {
-      page: "Bookmarks",
-      link: "/dashboard",
-    },
-    {
-      page: "Read",
-      link: "/dashboard",
-    },
-    {
-      page: "Listen",
-      link: "/dashboard",
+      page: "Blog Post",
+      link: "/blog",
     },
     {
       page: "Settings",
@@ -64,6 +71,25 @@ const MobileSidebar: React.FC = () => {
     };
   }, []);
 
+  const logOutMutation = useMutation({
+    mutationFn: async () => {
+      const res = await logout();
+      return res;
+    },
+    onSuccess: () => {
+      dispatch(logoutUser());
+      router.push("/login");
+    },
+    onError: (error) => {
+      showNotification({
+        title: "Error",
+        message: "An error occurred",
+        color: "red",
+        radius: "md",
+      });
+    },
+  });
+
   return (
     <motion.div
       initial="hidden"
@@ -103,9 +129,9 @@ const MobileSidebar: React.FC = () => {
         <div
           className={`h-[5.375rem] border-b border-gray-200 dark:border-border-bg-dark flex items-center pt-6 pl-3`}
         >
-          <h3 className="font-oleo font-normal text-3xl md:text-4xl">
-            Blogger
-          </h3>
+          <Link href={"/"}>
+            <h3 className="font-[700] text-3xl md:text-4xl">Blogger</h3>
+          </Link>
         </div>
         <div className="h-[calc(100%-5.375rem)] flex flex-col justify-between py-8">
           <ul className="mb-10">
@@ -118,7 +144,17 @@ const MobileSidebar: React.FC = () => {
           <ul>
             <SidebarLink href="/help" text="Get Help" />
             <SidebarLink href="/contact" text="Contact Us" />
-            <SidebarLink href="/logout" text="Log Out" />
+            <button
+              onClick={() => logOutMutation.mutate()}
+              disabled={logOutMutation.isPending}
+              className={`flex items-center font-[500] text-[.9rem] relative gap-6 h-12 px-4 rounded-xl mt-12 `}
+            >
+              {logOutMutation.isPending ? (
+                <ButtonLoader />
+              ) : (
+                <span>Log Out</span>
+              )}
+            </button>
           </ul>
         </div>
       </motion.div>
