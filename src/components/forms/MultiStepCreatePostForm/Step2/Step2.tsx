@@ -96,6 +96,7 @@ const Step2: React.FC = () => {
           <SecondaryButton
             text="Back"
             type="button"
+            link="/"
             action={() => dispatch(decreaseAuthStep())}
           />
         </div>

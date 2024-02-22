@@ -69,9 +69,9 @@ const SettingsPageWrapper = ({}: Props) => {
     <>
       <MaxWidthProvider>
         <div className="">
-          <div className="bg-white dark:bg-[#191919] mb-6 sm:mb-0 sm:h-[14vh] w-full flex items-center">
+          <div className="bg-white dark:bg-[#191919] mb-6 sm:mb-0 sm:h-[12vh] w-full flex items-center">
             <div>
-              <h1 className="text-2xl text-black dark:text-neutral-200 font-raleway font-medium">
+              <h1 className="text-2xl text-black dark:text-neutral-200 font-raleway font-medium mt-16 ">
                 Settings
               </h1>
               <p className="text-sm font-raleway font-normal dark:text-neutral-400 text-gray-800 ">

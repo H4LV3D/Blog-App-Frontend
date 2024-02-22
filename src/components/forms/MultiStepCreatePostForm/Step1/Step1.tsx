@@ -120,6 +120,7 @@ function SignUpForm({}: Props) {
           <SecondaryButton
             text="Back"
             type="button"
+            link="/"
             action={() => dispatch(decreaseAuthStep())}
           />
         </div>
