@@ -2,6 +2,7 @@ import DashboardPageLayout from "@/layouts/DashboardPageLayout/DashboardPageLayo
 import React from "react";
 import BlogEditor from "./BlogEditor";
 import ProtectedPageLayout from "@/layouts/ProtectedPageLayout/ProtectedPageLayout";
+import MaxWidthProvider from "@/components/shared/MaxWidthProvider/MaxWidthProvider";
 
 type Props = {};
 
@@ -9,10 +10,12 @@ const index = (props: Props) => {
   return (
     <ProtectedPageLayout>
       <DashboardPageLayout>
-        <div>
-          <h1>Blog</h1>
-        </div>
-        <BlogEditor />
+        <MaxWidthProvider>
+          <div>
+            <h1 className="text-3xl ">Blog</h1>
+            <BlogEditor />
+          </div>
+        </MaxWidthProvider>
       </DashboardPageLayout>
     </ProtectedPageLayout>
   );

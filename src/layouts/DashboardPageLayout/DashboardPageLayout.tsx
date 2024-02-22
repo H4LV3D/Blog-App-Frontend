@@ -12,12 +12,12 @@ type Props = {
 
 const DashboardPageLayout = ({ children }: Props) => {
   return (
-    <>
+    <ProtectedPageLayout>
       <ModalProvider>
         <div className="bg-white dark:bg-black/90 min-h-screen w-full">
           <Navbar nav={true} />
-          <div className="mt-20 mb-12">
-            <div className="fixed w-full bg-white border-t z-30">
+          <div className="mt-[70px] mb-12">
+            <div className="fixed w-full bg-white z-30">
               <Header />
             </div>
             {children}
@@ -25,7 +25,7 @@ const DashboardPageLayout = ({ children }: Props) => {
           <Footer />
         </div>
       </ModalProvider>
-    </>
+    </ProtectedPageLayout>
   );
 };
 

@@ -318,6 +318,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@kurkle/color@^0.3.0":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.2.tgz#5acd38242e8bde4f9986e7913c8fdf49d3aa199f"
+  integrity sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==
+
 "@mantine/core@^7.5.3":
   version "7.5.3"
   resolved "https://registry.yarnpkg.com/@mantine/core/-/core-7.5.3.tgz#ac83faf5d8f1b02bb09fde79d07365f6c3e76e1a"
@@ -529,6 +534,14 @@
   integrity sha512-TaxJDRzJ8/NWRT4lY2jguKCrNI6MRN+67dELzPjNUlvqzTxGANlMp68l7aC7hG8Bd1uHNxHl7ihv7MT50i/43A==
   dependencies:
     "@tanstack/query-core" "5.22.2"
+
+"@tinymce/tinymce-react@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@tinymce/tinymce-react/-/tinymce-react-4.3.2.tgz#fbe05e35e948b0e577eddf639bfe7ee2158fdc10"
+  integrity sha512-wJHZhPf2Mk3yTtdVC/uIGh+kvDgKuTw/qV13uzdChTNo68JI1l7jYMrSQOpyimDyn5LHAw0E1zFByrm1WHAVeA==
+  dependencies:
+    prop-types "^15.6.2"
+    tinymce "^6.0.0 || ^5.5.1"
 
 "@tiptap/core@^2.2.3":
   version "2.2.3"
@@ -1166,6 +1179,13 @@ chalk@^4.0.0:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+chart.js@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-4.4.1.tgz#ac5dc0e69a7758909158a96fe80ce43b3bb96a9f"
+  integrity sha512-C74QN1bxwV1v2PEujhmKjOZ7iUM4w6BWs23Md/6aOZZSlwMzeCIDGuZay++rBgChYru7/+QFeoQW0fQoP534Dg==
+  dependencies:
+    "@kurkle/color" "^0.3.0"
 
 chokidar@^3.5.3:
   version "3.6.0"
@@ -3142,6 +3162,11 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+react-chartjs-2@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-5.2.0.tgz#43c1e3549071c00a1a083ecbd26c1ad34d385f5d"
+  integrity sha512-98iN5aguJyVSxp5U3CblRLH67J8gkfyGNbiK3c+l1QI/G4irHMPQw44aEPmjVag+YKTyQ260NcF82GTQ3bdscA==
+
 react-dom@^18:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"
@@ -3471,6 +3496,7 @@ streamsearch@^1.1.0:
   integrity sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -3531,6 +3557,7 @@ string.prototype.trimstart@^1.0.7:
     es-abstract "^1.22.1"
 
 "strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+  name strip-ansi-cjs
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -3694,6 +3721,11 @@ tiny-case@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/tiny-case/-/tiny-case-1.0.3.tgz#d980d66bc72b5d5a9ca86fb7c9ffdb9c898ddd03"
   integrity sha512-Eet/eeMhkO6TX8mnUteS9zgPbUMQa4I6Kkp5ORiBD5476/m+PIRiumP5tmh5ioJpH7k51Kehawy2UDfsnxxY8Q==
+
+"tinymce@^6.0.0 || ^5.5.1":
+  version "6.8.3"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-6.8.3.tgz#0025a4aaa4c24dc2a3e32e83dfda705d196fd802"
+  integrity sha512-3fCHKAeqT+xNwBVESf6iDbDV0VNwZNmfrkx9c/6Gz5iB8piMfaO6s7FvoiTrj1hf1gVbfyLTnz1DooI6DhgINQ==
 
 tippy.js@^6.3.7:
   version "6.3.7"

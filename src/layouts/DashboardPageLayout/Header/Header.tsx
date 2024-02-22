@@ -11,25 +11,27 @@ function Header({}: Props) {
 
   const navItems = [
     { text: "Dashoard", link: "/dashboard" },
-    { text: "Bookmarks", link: "/dashboard" },
-    { text: "Blog", link: "/blog" },
-    { text: "Saved tems", link: "/dashboard" },
+    { text: "Blogs", link: "/myblogs" },
+    { text: "Editor", link: "/editor" },
+    { text: "Manage tems", link: "/dashboard" },
     { text: "Settings", link: "/settings" },
   ];
 
   return (
-    <div className="w-full bg-white dark:bg-[#191919] hidden lg:block ">
+    <div className="w-full hidden lg:block ">
       <MaxWidthProvider>
-        <div className="flex justify-between items-center w-full py-3 border-b">
-          {navItems.map((item, index) => (
-            <TetiaryButton
-              key={index}
-              text={item.text}
-              link={item.link}
-              small={false}
-              active={path === item.link}
-            />
-          ))}
+        <div className="w-full bg-white drop-shadow-xl border rounded-[0.65rem] px-[1.8rem] hidden lg:block ">
+          <div className="flex justify-between items-center w-full py-3 border-b">
+            {navItems.map((item, index) => (
+              <TetiaryButton
+                key={index}
+                text={item.text}
+                link={item.link}
+                small={false}
+                active={path === item.link}
+              />
+            ))}
+          </div>
         </div>
       </MaxWidthProvider>
     </div>

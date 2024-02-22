@@ -52,7 +52,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={clashDisplay.className}>
       <MantineProvider withCssVariables>
-        <Notifications position="top-left" zIndex={2077} />
+        <Notifications position="top-left" zIndex={10077} />
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
             <ThemeProvider>

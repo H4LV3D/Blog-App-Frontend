@@ -2,27 +2,27 @@
 import React from "react";
 import ProtectedPageLayout from "@/layouts/ProtectedPageLayout/ProtectedPageLayout";
 import DashboardPageLayout from "@/layouts/DashboardPageLayout/DashboardPageLayout";
-import SettingsPageWrapper from "@/components/page-wrappers/SettingsPageWrapper/SettingsPageWrapper";
+import ManagePageWrapper from "@/components/page-wrappers/ManagePageWrapper/ManagePageWrapper";
 import Head from "next/head";
 
 type Props = {};
 
-const Settings = ({}: Props) => {
+const Manage = ({}: Props) => {
   return (
     <>
       <>
         <Head>
           <title>Gen-Z | Settings</title>
-          <meta name="description" content="Gen-Z Blog settings" />
+          <meta name="description" content="Gen-Z Blog Settings" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.png" />
         </Head>
         <DashboardPageLayout>
-          <SettingsPageWrapper />
+          <ManagePageWrapper />
         </DashboardPageLayout>
       </>
     </>
   );
 };
 
-export default Settings;
+export default Manage;
