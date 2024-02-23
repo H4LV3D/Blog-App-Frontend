@@ -32,9 +32,9 @@ const Banner = ({ heading, text, data }: Props) => {
                 Start Writing
               </button>
             </Link>
-            <Link href={`/blogs/${Math.floor(Math.random() * 6)} `}>
+            <Link href={`/blogs `}>
               <button className="h-[3.5rem] w-[10rem] border border-black text-black rounded-[0.5rem] font-[500] ">
-                Random Read
+                View Blogs
               </button>
             </Link>
           </div>
