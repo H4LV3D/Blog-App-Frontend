@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import type { newBlog } from "@/typings/blog";
 import Link from "next/link";
@@ -22,7 +23,7 @@ const Header = ({ selectedBlog }: Props) => {
 
       <div className="w-full text-black dark:text-neutral-400">
         <h1 className="font-raleway font-semibold text-2xl sm:text-3xl md:text-4xl mt-4">
-          {selectedBlog.title}
+          {selectedBlog?.title}
         </h1>
         <Link href={``} className="">
           <p className="mb-0 sm:mb-2 line-clamp-3 text-sm md:text-base">

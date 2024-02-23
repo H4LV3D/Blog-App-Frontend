@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
-// import SuggestedInfo from "@/components/shared/SuggestedInfo/SuggestedInfo";
 import pageData from "@/data/index.json";
 import { newBlog } from "@/typings/blog";
 import Link from "next/link";
+import Image from "next/image";
 
 type Props = {
   selectedBlog: newBlog;
@@ -16,23 +17,22 @@ const Author = ({ selectedBlog }: Props) => {
           <div className="sm:flex items-center justify-between dark:text-neutral-400">
             <div className="left mb-3 sm:mb-0">
               <div className="h-20 w-20 flex items-center justify-center rounded-[50%]">
-                <img
-                  src={`/assets/Bust/peep-${selectedBlog.author.avatarId}.svg`}
-                  className="w-[75%]"
+                <Image
+                  src={`/assets/Bust/peep-${selectedBlog?.author?.avatarId}.svg`}
                   alt="An SVG illustration of a person dressed in different clothings"
+                  width={80}
+                  height={80}
+                  className="rounded-[50%]"
                 />
               </div>
               <div className="writer mt-3">
                 <h2 className="font-[500] text-2xl ">
-                  {selectedBlog.author.firstName} {selectedBlog.author.lastName}
+                  {selectedBlog?.author?.firstName}{" "}
+                  {selectedBlog?.author?.lastName}
                 </h2>
                 <p className="text-sm mt-1">
-                  0 Followers | {selectedBlog.author.userName}
+                  0 Followers | {selectedBlog?.author?.userName}
                 </p>
-                {/* <p className="text-sm mt-2">
-                  Senior software developer at{" "}
-                  <span className="font-semibold">Gen-Z Tales</span>
-                </p> */}
               </div>
             </div>
             <div className="right flex items-center sm:justify-end space-x-3">

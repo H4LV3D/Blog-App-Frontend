@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import type { newBlog } from "@/typings/blog";
 import ReactHtmlParser from "react-html-parser";
