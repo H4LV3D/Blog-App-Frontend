@@ -4,6 +4,7 @@ import ProtectedPageLayout from "@/layouts/ProtectedPageLayout/ProtectedPageLayo
 import DashboardPageLayout from "@/layouts/DashboardPageLayout/DashboardPageLayout";
 import EditorPageWrapper from "@/components/page-wrappers/EditorPageWrapper/EditorPageWrapper";
 import Head from "next/head";
+import CreateBlogPageWrapper from "@/components/page-wrappers/CreateBlogPageWrapper/CreateBlogPageWrapper";
 
 type Props = {};
 
@@ -18,7 +19,8 @@ const Editor = ({}: Props) => {
           <link rel="icon" href="/favicon.png" />
         </Head>
         <DashboardPageLayout>
-          <EditorPageWrapper />
+          {/* <EditorPageWrapper /> */}
+          <CreateBlogPageWrapper />
         </DashboardPageLayout>
       </>
     </>
