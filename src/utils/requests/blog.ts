@@ -22,7 +22,7 @@ export const getBlog = async (id: string) => {
 };
 
 export const updateBlog = async (id: string, data: createBlogData) => {
-  const res = await appAxios.put(`/blogs/${id}`, data);
+  const res = await appAxios.patch(`/blogs/${id}`, data);
   return res.data;
 };
 
