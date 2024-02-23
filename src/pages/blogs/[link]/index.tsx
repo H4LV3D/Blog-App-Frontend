@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import ViewLayout from "@/layouts/ViewLayout/ViewLayout";
 import Header from "./sections/header";
@@ -18,6 +19,8 @@ import { fetchBlog, setShowEditModal } from "@/store/slices/blog/blogSlice";
 import ShowNotification from "@/components/Notifications/ShowNotification";
 
 type Props = {};
+
+import type { InferGetStaticPropsType, GetStaticProps } from "next";
 
 const Blog = ({}: Props) => {
   const router = useRouter();
