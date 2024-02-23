@@ -2,6 +2,7 @@ import React from "react";
 // import SuggestedInfo from "@/components/shared/SuggestedInfo/SuggestedInfo";
 import pageData from "@/data/index.json";
 import { newBlog } from "@/typings/blog";
+import Link from "next/link";
 
 type Props = {
   selectedBlog: newBlog;
@@ -54,9 +55,11 @@ const Author = ({ selectedBlog }: Props) => {
               Get started with writing today and share your thoughts with the
               world. You can also get paid for your work. Click the button below
             </p>
-            <button className="border border-black text-black rounded-[0.5rem] text-base font-[500] h-[3rem] px-8 ">
-              Write Now
-            </button>
+            <Link href="/blogs/create" className="pt-4">
+              <button className="border border-black text-black rounded-[0.5rem] text-base font-[500] h-[3rem] px-8 mt-4 ">
+                Write Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>
