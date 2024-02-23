@@ -9,11 +9,14 @@ import { setArrangement } from "@/store/slices/arrangement/arrangementSlice";
 import PageLayout from "@/layouts/PageLayout/PageLayout";
 import MaxWidthProvider from "@/components/shared/MaxWidthProvider/MaxWidthProvider";
 import SearchBox from "@/components/shared/search/Search";
+import { useMutation } from "@tanstack/react-query";
+import { getBlogs } from "@/utils/requests/blog";
+import ButtonLoader from "@/components/shared/ButtonLoader/ButtonLoader";
 
 type Props = {};
 
 const Blogs = ({}: Props) => {
-  const { blogs } = pageData;
+  // const { blogs } = pageData;
   const dispatch = useAppDispatch();
   const arrangement = useAppSelector((state) => state.arrangement.value);
 
@@ -34,6 +37,28 @@ const Blogs = ({}: Props) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const [blogs, setBlogs] = useState([]);
+
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const res = getBlogs();
+      return res;
+    },
+    onSuccess: (data) => {
+      console.log(data);
+      setBlogs(data);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  useEffect(() => {
+    mutation.mutate();
+  }, []);
+
+  const loading = mutation.isPending;
 
   return (
     <>
@@ -62,11 +87,17 @@ const Blogs = ({}: Props) => {
                   : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 md:gap-x-6 md:gap-y-10"
               } `}
             >
-              {blogs.map((blog, index) => (
-                <div key={index} className="mb-6">
-                  <DisplayCard display={blog} arrangement={arrangement} />
+              {loading && (
+                <div className="w-full h-[28rem] flex items-center justify-center ">
+                  <ButtonLoader />
                 </div>
-              ))}
+              )}
+              {!loading &&
+                blogs.map((blog, index) => (
+                  <div key={index} className="mb-6">
+                    <DisplayCard display={blog} arrangement={arrangement} />
+                  </div>
+                ))}
             </div>
           </MaxWidthProvider>
         </div>
