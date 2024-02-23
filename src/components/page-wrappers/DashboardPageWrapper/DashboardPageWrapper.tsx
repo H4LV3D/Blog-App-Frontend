@@ -17,31 +17,31 @@ const stats = [
   {
     id: 1,
     title: "Word Count",
-    description: "10000",
+    description: "0",
     icon: "fas fa-file-word",
   },
   {
     id: 2,
     title: "Articles Read",
-    description: "500",
+    description: "0",
     icon: "fas fa-book",
   },
   {
     id: 3,
     title: "Reading Time",
-    description: "400",
+    description: "0",
     icon: "fas fa-clock",
   },
   {
     id: 4,
     title: "Bookmarks",
-    description: "50",
+    description: "0",
     icon: "fas fa-bookmark",
   },
   {
     id: 5,
     title: "Written Content",
-    description: "10",
+    description: "0",
     icon: "fas fa-pencil-alt",
   },
 ];
@@ -96,7 +96,7 @@ const DashboardPageWrapper = ({}: Props) => {
               Welcome {user?.firstName},
             </h1>
             <p className="text-sm font-raleway font-normal dark:text-neutral-400 text-gray-800 ">
-              Here&390;s what you&390;ve been up to.
+              Here&apos;s what you&apos;ve been up to.
             </p>
           </div>
 
@@ -193,7 +193,7 @@ const DashboardPageWrapper = ({}: Props) => {
                   </h3>
                   <p className="text-sm mt-2 ">
                     Collaboration is a great way to learn and grow as a writer,
-                    and it&390;s a lot of fun too! You can collaborate with
+                    and it&apos;s a lot of fun too! You can collaborate with
                     other writers on projects, or just chat about writing in
                     general.
                   </p>
@@ -236,7 +236,7 @@ const DashboardPageWrapper = ({}: Props) => {
                   </h3>
                   <p className="text-sm mt-2 ">
                     AI is a powerful tool that can help you write better and
-                    faster. It&390;s not just for writers, either - it can be
+                    faster. It&apos;s not just for writers, either - it can be
                     used by anyone who wants to communicate with others online.
                   </p>
                   <div className="mt-4 w-2/3 sm:w-1/2 lg:w-1/3">
