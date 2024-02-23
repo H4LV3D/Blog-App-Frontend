@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { useMutation } from "@tanstack/react-query";
-import { getAvatarId, login } from "@/utils/requests/auth";
 import { useRouter } from "next/navigation";
 import MaxWidthProvider from "@/components/shared/MaxWidthProvider/MaxWidthProvider";
 import ShowNotification from "@/components/Notifications/ShowNotification";
@@ -42,6 +41,7 @@ const CreateBlogPageWrapper = ({}: Props) => {
     setValue,
     getValues,
     handleSubmit,
+    reset,
   } = useForm<CreateBlog>({
     defaultValues: {
       title: "",
@@ -81,6 +81,13 @@ const CreateBlogPageWrapper = ({}: Props) => {
     },
     onSuccess: (data) => {
       ShowNotification(data.message);
+      reset({
+        title: "",
+        content: "",
+        image:
+          "https://revaalt.com/wp-content/uploads/woocommerce-placeholder-600x600.png",
+        author: user?.email,
+      });
       router.push("/blogs");
     },
     onError: (error) => {
@@ -97,7 +104,7 @@ const CreateBlogPageWrapper = ({}: Props) => {
     <>
       <MaxWidthProvider>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="w-full py-12 pb-16 sm:w-[550px]">
+          <div className="w-full py-12 pt-20 pb-16 sm:w-[550px]">
             <h3 className="text-5xl font-[700]  ">Create Blog</h3>
 
             <div className="mt-6">
