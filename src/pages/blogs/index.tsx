@@ -16,7 +16,6 @@ import ButtonLoader from "@/components/shared/ButtonLoader/ButtonLoader";
 type Props = {};
 
 const Blogs = ({}: Props) => {
-  // const { blogs } = pageData;
   const dispatch = useAppDispatch();
   const arrangement = useAppSelector((state) => state.arrangement.value);
 
