@@ -13,7 +13,7 @@ type Nav = {
 type Props = {
   Nav: Nav[];
   color?: string;
-  arrangement?: string;
+  arrangement?: "cards" | string;
 };
 
 const DisplayNavBar = ({ Nav }: Props) => {
