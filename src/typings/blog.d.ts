@@ -27,6 +27,7 @@ export type BlogUser = {
 };
 
 export type newBlog = {
+  _id: string;
   title: string;
   content: string;
   image: string;
