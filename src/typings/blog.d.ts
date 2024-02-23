@@ -15,3 +15,21 @@ export type Blog = {
     bad: number;
   };
 };
+
+export type BlogUser = {
+  _id?: string;
+  avatarId?: string | number | null;
+  firstName?: string;
+  lastName?: string;
+  userName?: string;
+  email?: string;
+  emailVerified?: string;
+};
+
+export type newBlog = {
+  title: string;
+  content: string;
+  image: string;
+  author: BlogUser;
+  [key: string]: any;
+};
