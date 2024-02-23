@@ -41,7 +41,7 @@ const DisplayCard = ({ display, arrangement }: Props) => {
                 arrangement !== "single"
                   ? "text-xl md:text-2xl mb-2"
                   : "text-xl md:text-3xl mb-2 md:mb-4"
-              } font-[500] text-[#000] line-clamp-2`}
+              } font-[500] text-[#000] line-clamp-1`}
             >
               {display?.title}
             </h1>
