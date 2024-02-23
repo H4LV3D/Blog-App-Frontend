@@ -69,25 +69,18 @@ const MyBlogsPageWrapper = ({}: Props) => {
 
           <div className="bg-[#fff] dark:bg-[#191919] w-full min-h-[30vh] mt-8">
             <h3 className="text-xl font-medium">Bookmarks</h3>
-            <div className="py-5 flex flex-row overflow-x-auto slide">
-              {blogs &&
+            <div className="py-5 w-full  min-h-[25vh] flex items-center justify-center ">
+              <div className="my-auto">
+                <p className="text-center text-base dark:text-neutral-400">
+                  You have not bookmarked any blog yet.
+                </p>
+              </div>
+              {/* {blogs &&
                 blogs?.map((blog, index) => (
                   <div key={index} className="mb-3 min-w-[23rem] mr-5 ">
                     <DisplayCard display={blog} arrangement={arrangement} />
                   </div>
-                ))}
-            </div>
-          </div>
-
-          <div className="bg-[#fff] dark:bg-[#191919] w-full min-h-[30vh] mt-8">
-            <h3 className="text-xl font-medium">Recommended for you.</h3>
-            <div className="py-5 flex flex-row items-center overflow-x-auto ">
-              {blogs &&
-                blogs?.map((blog, index) => (
-                  <div key={index} className="mb-3 min-w-[23rem] mr-5 ">
-                    <DisplayCard display={blog} arrangement={arrangement} />
-                  </div>
-                ))}
+                ))} */}
             </div>
           </div>
         </div>
