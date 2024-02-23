@@ -1,11 +1,13 @@
 import React from "react";
 // import SuggestedInfo from "@/components/shared/SuggestedInfo/SuggestedInfo";
 import pageData from "@/data/index.json";
+import { newBlog } from "@/typings/blog";
 
-type Props = {};
+type Props = {
+  selectedBlog: newBlog;
+};
 
-const Author = (props: Props) => {
-  const { blogs } = pageData;
+const Author = ({ selectedBlog }: Props) => {
   return (
     <>
       <div className="min-h-[40vh] bg-[#f7f7f7] dark:bg-neutral-800 w-full mt-10">
@@ -14,20 +16,22 @@ const Author = (props: Props) => {
             <div className="left mb-3 sm:mb-0">
               <div className="h-20 w-20 flex items-center justify-center rounded-[50%]">
                 <img
-                  src={`/assets/Bust/peep-8.svg`}
+                  src={`/assets/Bust/peep-${selectedBlog.author.avatarId}.svg`}
                   className="w-[75%]"
                   alt="An SVG illustration of a person dressed in different clothings"
                 />
               </div>
               <div className="writer mt-3">
-                <h2 className="font-[500] text-2xl ">Toluwalope Akinkunmi</h2>
+                <h2 className="font-[500] text-2xl ">
+                  {selectedBlog.author.firstName} {selectedBlog.author.lastName}
+                </h2>
                 <p className="text-sm mt-1">
-                  2.7k Followers | Senior software developer{" "}
+                  0 Followers | {selectedBlog.author.userName}
                 </p>
-                <p className="text-sm mt-2">
+                {/* <p className="text-sm mt-2">
                   Senior software developer at{" "}
                   <span className="font-semibold">Gen-Z Tales</span>
-                </p>
+                </p> */}
               </div>
             </div>
             <div className="right flex items-center sm:justify-end space-x-3">
