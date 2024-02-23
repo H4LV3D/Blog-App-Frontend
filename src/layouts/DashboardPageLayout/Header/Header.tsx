@@ -13,7 +13,7 @@ function Header({}: Props) {
     { text: "Dashoard", link: "/dashboard" },
     { text: "Blogs", link: "/myblogs" },
     { text: "Editor", link: "/editor" },
-    { text: "Manage tems", link: "/dashboard" },
+    { text: "Manage", link: "/manage" },
     { text: "Settings", link: "/settings" },
   ];
 
