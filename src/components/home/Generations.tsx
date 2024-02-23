@@ -11,30 +11,7 @@ const Generations = ({}: Props) => {
   return (
     <>
       <div className="relative py-20 w-full border-t ">
-        <div className="mb-4 w-full sm:flex justify-between items-center">
-          <h1 className="text-4xl sm:text-4xl text-black font-[700] ">
-            Explore Our Collection
-          </h1>
-          <Link href="/blogs">
-            <button className="border border-black text-black text-lg font-[500] rounded-[0.5rem] h-[3.5rem] px-6 ">
-              View All
-            </button>
-          </Link>
-        </div>
-
-        <div className="py-8 overflow-hidden">
-          <div className="relative ">
-            <div className="grid grid-cols-3 gap-4 ">
-              {blogs.slice(0, 3).map((blog, index) => (
-                <div key={index} className="">
-                  <DisplayCard display={blog} arrangement="cards" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="mb-4 w-full sm:flex justify-between items-center mt-16">
+        <div className="mb-4 w-full sm:flex justify-between items-center ">
           <h1 className="text-4xl sm:text-4xl text-black font-[700] ">
             Famous Authors
           </h1>
