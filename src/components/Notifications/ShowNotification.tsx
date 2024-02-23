@@ -5,7 +5,7 @@ const ShowNotification = (message: string) => {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
-    closeOnClick: true,
+    closeOnClick: false,
     pauseOnHover: true,
     draggable: true,
     progressStyle: { backgroundColor: "#000" },
