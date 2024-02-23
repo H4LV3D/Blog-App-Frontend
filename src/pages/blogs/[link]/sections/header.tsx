@@ -1,9 +1,9 @@
 import React from "react";
-import type { Blog } from "@/typings/blog";
+import type { newBlog } from "@/typings/blog";
 import Link from "next/link";
 
 type Props = {
-  selectedBlog: Blog;
+  selectedBlog: newBlog;
 };
 
 const Header = ({ selectedBlog }: Props) => {
@@ -24,8 +24,11 @@ const Header = ({ selectedBlog }: Props) => {
         <h1 className="font-raleway font-semibold text-2xl sm:text-3xl md:text-4xl mt-4">
           {selectedBlog.title}
         </h1>
-        <Link href={``} className="font-raleway text-sm sm:text-base mt-2">
-          Toluwalope Akinkunmi
+        <Link href={``} className="">
+          <p className="mb-0 sm:mb-2 line-clamp-3 text-sm md:text-base">
+            Author :{" "}
+            <span className="font-[500]">{`${selectedBlog?.author?.firstName} ${selectedBlog?.author?.lastName}`}</span>
+          </p>
         </Link>
       </div>
     </>
