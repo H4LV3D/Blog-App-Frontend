@@ -72,20 +72,19 @@ function LoginForm({}: Props) {
       return res;
     },
     onSuccess: (data) => {
-      console.log(data.data);
       dispatch(loginUser(data.data));
-      if (!data.data.emailVerified) {
-        dispatch(
-          selectAuthStep({
-            direction: "next",
-            step: 1,
-            selectedEmail: data.data.user.email,
-          })
-        );
-        router.push("/signup");
-      } else {
-        router.push("/dashboard");
-      }
+      // if (!data.data.emailVerified) {
+      //   dispatch(
+      //     selectAuthStep({
+      //       direction: "next",
+      //       step: 1,
+      //       selectedEmail: data.data.user.email,
+      //     })
+      //   );
+      //   router.push("/signup");
+      // } else {
+      // }
+      router.push("/dashboard");
       ShowNotification(data.data.message);
     },
     onError: (error) => {

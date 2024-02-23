@@ -45,7 +45,6 @@ const Blogs = ({}: Props) => {
       return res;
     },
     onSuccess: (data) => {
-      console.log(data);
       setBlogs(data);
     },
     onError: (error) => {

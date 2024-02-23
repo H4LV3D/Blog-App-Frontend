@@ -12,10 +12,10 @@ const Header = ({ selectedBlog }: Props) => {
     <>
       <div className="h-[30vh] flex justify-center border items-center rounded-xl mt-0 mb-8">
         <img
-          src={`/assets/Bust/peep-${Math.floor(
-            Math.random() * 104
-          ).toString()}.svg`}
-          // src={selectedBlog.image}
+          // src={`/assets/Bust/peep-${Math.floor(
+          //   Math.random() * 104
+          // ).toString()}.svg`}
+          src={selectedBlog.image}
           className="h-[26rem]"
           alt="An SVG illustration of a person dressed in different clothings"
         />
