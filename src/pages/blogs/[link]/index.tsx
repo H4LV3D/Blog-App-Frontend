@@ -1,5 +1,4 @@
 import React from "react";
-import pageData from "@/data/index.json";
 import ViewLayout from "@/layouts/ViewLayout/ViewLayout";
 import Header from "./sections/header";
 import Info from "./sections/info";
@@ -10,27 +9,43 @@ import { useRouter } from "next/router";
 import ButtonLoader from "@/components/shared/ButtonLoader/ButtonLoader";
 import Subscribe from "@/components/home/Subscribe";
 import Link from "next/link";
-import { useMutation } from "@tanstack/react-query";
-import { getBlog } from "@/utils/requests/blog";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { deleteBlog, getBlog } from "@/utils/requests/blog";
 import { newBlog } from "@/typings/blog";
 import { useAppSelector } from "@/hooks/useAppSelector";
+import { useAppDispatch } from "@/hooks/useAppDispatch";
+import { fetchBlog, setShowEditModal } from "@/store/slices/blog/blogSlice";
+import ShowNotification from "@/components/Notifications/ShowNotification";
 
 type Props = {};
+
 const Blog = ({}: Props) => {
   const router = useRouter();
   const link = router.query.link;
   const [loading, setLoading] = React.useState(false);
   const [selectedBlog, setSelectedBlog] = React.useState<newBlog>();
   const user = useAppSelector((state) => state.user.data);
+  const dispatch = useAppDispatch();
 
-  const mutation = useMutation({
-    mutationFn: async () => {
+  const { isLoading } = useQuery({
+    queryKey: [`blog-${link}`],
+    queryFn: async () => {
       const blog = await getBlog(link as string);
+      dispatch(setSelectedBlog(blog));
       setSelectedBlog(blog);
       return blog;
     },
+    enabled: true,
+  });
+
+  const deleteMutation = useMutation({
+    mutationFn: async () => {
+      const res = deleteBlog(selectedBlog?._id as string);
+      return res;
+    },
     onSuccess: (data) => {
-      console.log(data);
+      ShowNotification(data.message);
+      router.push("/blogs");
     },
     onError: (error) => {
       console.log(error);
@@ -39,7 +54,6 @@ const Blog = ({}: Props) => {
 
   React.useEffect(() => {
     if (selectedBlog === undefined || selectedBlog === null) {
-      mutation.mutate();
       setLoading(true);
     } else {
       setLoading(false);
@@ -69,16 +83,26 @@ const Blog = ({}: Props) => {
                     </Link>
                     {selectedBlog?.author?._id === user?.id && (
                       <div className="flex items-center space-x-4 ">
-                        <Link href={`/blogs`}>
-                          <button className="my-2 text-sm text-neutral-500 hover:text-black border hover:border-black h-[2rem] px-6 rounded-[0.25rem] font-[500] ">
-                            Edit
-                          </button>
-                        </Link>
-                        <Link href={`/blogs`}>
-                          <button className="my-2 text-sm text-neutral-500 hover:text-red-500 border hover:border-red-500 h-[2rem] px-6 rounded-[0.25rem] font-[500] ">
-                            Delete
-                          </button>
-                        </Link>
+                        <button
+                          onClick={() => {
+                            dispatch(setShowEditModal());
+                            dispatch(fetchBlog(selectedBlog));
+                          }}
+                          className="my-2 text-sm text-neutral-500 hover:text-black border hover:border-black h-[2rem] px-6 rounded-[0.25rem] font-[500] "
+                        >
+                          Edit
+                        </button>
+
+                        <button
+                          onClick={() => deleteMutation.mutate()}
+                          className="my-2 text-sm text-neutral-500 hover:text-red-500 border hover:border-red-500 h-[2rem] px-6 rounded-[0.25rem] font-[500] "
+                        >
+                          {deleteMutation.isPending ? (
+                            <ButtonLoader />
+                          ) : (
+                            <span className="">Delete</span>
+                          )}
+                        </button>
                       </div>
                     )}
                   </div>
