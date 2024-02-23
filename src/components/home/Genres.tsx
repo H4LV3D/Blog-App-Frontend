@@ -8,12 +8,6 @@ type TitleAndTeaser = {
   teaser: string;
 };
 
-type GenreItem = {
-  name: string;
-  illustrativeImage: string;
-  titlesAndTeasers: TitleAndTeaser[];
-};
-
 function Genres({}: Props) {
   const { genres } = pageData;
 

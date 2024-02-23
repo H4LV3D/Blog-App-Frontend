@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import Header from "./Header/Header";
-import Footer from "@/components/shared/DisplayCard/footer/Footer";
+import Footer from "@/components/shared/footer/Footer";
 import ModalProvider from "@/components/page-wrappers/ModalProvider/ModalProvider";
 import ProtectedPageLayout from "@/layouts/ProtectedPageLayout/ProtectedPageLayout";
 

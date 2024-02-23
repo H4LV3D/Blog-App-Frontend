@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import pageData from "@/data/index.json";
 import Genres from "@/components/home/Genres";
+import Generations from "@/components/home/Generations";
 import Collaborative from "@/components/home/Collaborative";
 import Review from "@/components/home/Reviews";
 // import Subscribe from "@/components/home/Subscribe";
-import Footer from "@/components/shared/DisplayCard/footer/Footer";
+import Footer from "@/components/shared/footer/Footer";
 import Banner from "@/components/shared/Banner/Banner";
 import Head from "next/head";
 import MaxWidthProvider from "@/components/shared/MaxWidthProvider/MaxWidthProvider";
@@ -35,15 +36,13 @@ export default function Home({}: {}) {
             data={blogs}
           />
 
-          {/* <Generations /> */}
+          <Generations />
         </MaxWidthProvider>
 
         <Collaborative />
 
         <div className="md:container mx-auto !px-6 lg:px-0 font-raleway ">
           <Review reviews={reviews} />
-
-          {/* <Subscribe setNotify={setNotify} setMessage={setMessage} /> */}
         </div>
         <Footer />
       </div>

@@ -72,7 +72,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <QueryClientProvider client={queryClient}>
           <Provider store={store}>
             <ThemeProvider>
-              <Component {...pageProps} />;
+              <Component {...pageProps} />
             </ThemeProvider>
           </Provider>
         </QueryClientProvider>

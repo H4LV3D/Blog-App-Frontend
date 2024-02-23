@@ -81,9 +81,9 @@ function Footer({}: Props) {
       <div className="w-full font-raleway bg-neutral-100 py-20">
         <div className="px-6 lg:px-0 md:container mx-auto xl:w-[1240px]">
           <div className="sm:flex flex-row lg:grid sm:grid-cols-2 mb-8">
-            <div className="w-full lg:w-1/3 ">
+            <div className="w-full">
               <h3 className=" font-[700] text-4xl">Blogger</h3>
-              <p className="text-base lg:text-lg font-[400] mt-2 text-gray-800 lg:pl-6  ">
+              <p className="text-base lg:text-lg font-[400] mt-3 text-gray-800 lg:pr-6 lg:max-w-md ">
                 Ready to learn more? Dive into a world of playful, exciting, and
                 interesting experience of my personal journey in the world of
                 Tech.

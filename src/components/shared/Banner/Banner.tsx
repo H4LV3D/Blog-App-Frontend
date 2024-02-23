@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   heading: {
@@ -26,12 +27,16 @@ const Banner = ({ heading, text, data }: Props) => {
             {text}
           </p>
           <div className="space-x-4 ">
-            <button className="h-[3.5rem] w-[10rem] bg-black text-white rounded-[0.5rem] font-[500] ">
-              Read Now
-            </button>
-            <button className="h-[3.5rem] w-[10rem] border border-black text-black rounded-[0.5rem] font-[500] ">
-              Search
-            </button>
+            <Link href="/blogs/create">
+              <button className="h-[3.5rem] w-[10rem] bg-black text-white rounded-[0.5rem] font-[500] ">
+                Start Writing
+              </button>
+            </Link>
+            <Link href={`/blogs/${Math.floor(Math.random() * 6)} `}>
+              <button className="h-[3.5rem] w-[10rem] border border-black text-black rounded-[0.5rem] font-[500] ">
+                Random Read
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,26 +1,48 @@
 import React from "react";
+import data from "@/data/index.json";
+import DisplayCard from "../shared/DisplayCard/DisplayCard";
+import Image from "next/image";
+import Link from "next/link";
 
 type Props = {};
 
-const Generations = (props: Props) => {
+const Generations = ({}: Props) => {
+  const { blogs } = data;
   return (
     <>
-      <div className="relative min-h-screen w-full overflow-hidden flex flex-col items-center justify-center">
-        <div className="mb-4">
-          <div className="flex flex-col justify-center items-center lg:w-[900px]">
-            <h1 className="text-5xl sm:text-6xl text-black dark:text-neutral-200 font-oleo font-normal text-center">
-              The message, medium
-              <br className="xs:hidden sm:block" /> & media
-            </h1>
-          </div>
-          <div className="w-full flex flex-col justify-center items-center mt-7 lg:w-[900px]">
-            <p className="text-sm md:text-lg text-center font-raleway font-normal dark:text-neutral-400 text-gray-800 sm:w-3/4 lg:w-2/3 mb-8">
-              Ready to learn more? Dive into a world of playful, exciting, and
-              interesting experience of my personal journey in the world of
-              Tech.
-            </p>
+      <div className="relative py-20 w-full border-t ">
+        <div className="mb-4 w-full sm:flex justify-between items-center">
+          <h1 className="text-4xl sm:text-4xl text-black font-[700] ">
+            Explore Our Collection
+          </h1>
+          <Link href="/blogs">
+            <button className="border border-black text-black text-lg font-[500] rounded-[0.5rem] h-[3.5rem] px-6 ">
+              View All
+            </button>
+          </Link>
+        </div>
+
+        <div className="py-8 overflow-hidden">
+          <div className="relative ">
+            <div className="grid grid-cols-3 gap-4 ">
+              {blogs.slice(0, 3).map((blog, index) => (
+                <div key={index} className="">
+                  <DisplayCard display={blog} arrangement="cards" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+
+        <div className="mb-4 w-full sm:flex justify-between items-center mt-16">
+          <h1 className="text-4xl sm:text-4xl text-black font-[700] ">
+            Famous Authors
+          </h1>
+          <button className="border border-black text-black text-lg font-[500] rounded-[0.5rem] h-[3.5rem] px-6 ">
+            See More
+          </button>
+        </div>
+
         <div className="py-8 overflow-hidden">
           <div className="relative sm:w-[750px] md:w-[900px] lg:w-[1100px] h-[350px]">
             <div className="absolute top-0 left-0 w-[275px * 100] flex space-x-4 animate-marquee">
@@ -29,9 +51,11 @@ const Generations = (props: Props) => {
                   key={index}
                   className="flex-shrink-0 w-[275px] h-[330px] border dark:border-neutral-700 rounded-lg hover:shadow-xl"
                 >
-                  <img
+                  <Image
                     src={`/assets/Bust/peep-${index + 1}.svg`}
                     className="mx-auto"
+                    width={250}
+                    height={305}
                     alt="A vector illustration of a boy holding a laptop open before him"
                   />
                 </div>

@@ -12,23 +12,7 @@ import SecondaryButton from "@/components/shared/buttons/Secondary";
 type Props = {};
 
 function SignUpForm({}: Props) {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm<SignUpFormInput>({
-  //   // resolver: yupResolver(signUpSchema),
-  //   mode: "all",
-  // });
-
   const dispatch = useAppDispatch();
-
-  // const onSubmit: SubmitHandler<SignUpFormInput> = async (
-  //   data: SignUpFormInput
-  // ) => {
-  //   console.log(data);
-  //   dispatch(increaseAuthStep());
-  // };
 
   return (
     <>
