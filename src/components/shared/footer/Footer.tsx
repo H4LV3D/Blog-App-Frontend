@@ -12,10 +12,6 @@ const footerData = {
       link: "/",
     },
     {
-      title: "Careers",
-      link: "/",
-    },
-    {
       title: "Feedback",
       link: "/",
     },
@@ -34,14 +30,6 @@ const footerData = {
       link: "/",
     },
     {
-      title: "Pricing",
-      link: "/",
-    },
-    {
-      title: "About Us",
-      link: "/",
-    },
-    {
       title: "Contact Us",
       link: "/",
     },
@@ -57,10 +45,6 @@ const footerData = {
     },
     {
       title: "Blogs",
-      link: "/",
-    },
-    {
-      title: "Podcasts",
       link: "/",
     },
     {
@@ -83,7 +67,7 @@ function Footer({}: Props) {
           <div className="sm:flex flex-row lg:grid sm:grid-cols-2 mb-8">
             <div className="w-full">
               <h3 className=" font-[700] text-4xl">Blogger</h3>
-              <p className="text-base lg:text-lg font-[400] mt-3 text-gray-800 lg:pr-6 lg:max-w-md ">
+              <p className="text-base lg:text-lg font-[400] mt-3 text-gray-800 lg:pr-6 lg:max-w-md tracking-wider ">
                 Ready to learn more? Dive into a world of playful, exciting, and
                 interesting experience of my personal journey in the world of
                 Tech.
@@ -92,7 +76,7 @@ function Footer({}: Props) {
 
             <div className="hidden w-full sm:w-2/3 md:w-full sm:grid grid-cols-3 sm:grid-cols-3 gap-4">
               <div className="flex flex-col">
-                <h3 className="font-raleway font-normal text-lg text-black dark:text-neutral-400 mb-4">
+                <h3 className="font-raleway font-[500] text-lg text-black dark:text-neutral-400 mb-4">
                   Resource
                 </h3>
                 <div className="flex flex-col space-y-2">
@@ -106,7 +90,7 @@ function Footer({}: Props) {
                 </div>
               </div>
               <div className="flex flex-col">
-                <h3 className="font-raleway font-normal text-lg text-black dark:text-neutral-400 mb-4">
+                <h3 className="font-raleway font-[500] text-lg text-black dark:text-neutral-400 mb-4">
                   Pages
                 </h3>
                 <div className="flex flex-col space-y-2">
@@ -120,7 +104,7 @@ function Footer({}: Props) {
                 </div>
               </div>
               <div className="flex flex-col">
-                <h3 className="font-raleway font-normal text-lg text-black dark:text-neutral-400 mb-4">
+                <h3 className="font-raleway font-[500] text-lg text-black dark:text-neutral-400 mb-4">
                   Company
                 </h3>
                 <div className="flex flex-col space-y-2">
@@ -141,7 +125,7 @@ function Footer({}: Props) {
           <div className="sm:grid grid-cols-1 sm:grid-cols-2 items-center py-2 mt-4">
             <div className="flex items-center font-raleway font-normal sm:text-base text-sm text-neutral-600 dark:text-neutral-400 space-x-4">
               <span className=" ">All rights reserved.</span>
-              <span className="font-number ">© 2023 </span>
+              <span className="font-number ">© 2024 </span>
             </div>
             <div className="flex space-x-2 mt-2 items-center sm:justify-end">
               {socials.map((item, index) => (
