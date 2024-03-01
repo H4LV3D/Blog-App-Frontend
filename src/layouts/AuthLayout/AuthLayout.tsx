@@ -7,6 +7,7 @@ import { useAppSelector } from "@/hooks/useAppSelector";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { updateAvatarId } from "@/store/slices/user/UserSlice";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {
   children: React.ReactNode;
@@ -35,7 +36,9 @@ function AuthLayout({ children, form }: Props) {
           {form !== "signup" && step !== 2 ? (
             <>
               <div className="flex flex-col justify-center items-center min-h-screen">
-                <h3 className=" font-[700] text-4xl mb-6">Blogger</h3>
+                <Link href="/">
+                  <h3 className=" font-[700] text-4xl mb-6">Blogger</h3>
+                </Link>
                 <div className="w-[275px] h-[330px] border dark:border-neutral-700 rounded-lg hover:shadow-xl ">
                   {avatarId === null ? (
                     <div className="w-full h-[330px] flex items-center justify-center relative">
