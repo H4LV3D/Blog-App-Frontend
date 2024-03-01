@@ -25,9 +25,9 @@ const DisplayNavBar = ({ Nav }: Props) => {
   return (
     <div>
       <div className=" dark:bg-[#191919] w-full flex flex-row justify-between border-b mb-8">
-        <div className="w-full  flex items-center space-x-2">
+        <div className="w-full flex items-center space-x-2">
           <Icons icon={plus} small={true} />
-          {Nav.map((nav, index: number) => (
+          {/* {Nav.map((nav, index: number) => (
             <div key={index}>
               <button
                 onClick={() => setNavTab(nav.text)}
@@ -42,11 +42,11 @@ const DisplayNavBar = ({ Nav }: Props) => {
                 {nav.text}
               </button>
             </div>
-          ))}
+          ))} */}
         </div>
         <div className="">
-          <div className="flex">
-            <Icons
+          <div className="flex items-center space-x-2 ">
+            {/* <Icons
               icon={square}
               color={arrangement === "single" ? "#000" : "#a3a3a3"}
               action={() => dispatch(setArrangement("single"))}
@@ -55,7 +55,7 @@ const DisplayNavBar = ({ Nav }: Props) => {
               icon={grid2}
               color={arrangement === "double" ? "#000" : "#a3a3a3"}
               action={() => dispatch(setArrangement("double"))}
-            />
+            /> */}
             <Icons
               icon={grid3}
               color={arrangement === "cards" ? "#000" : "#a3a3a3"}
