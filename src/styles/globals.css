@@ -1,14 +1,15 @@
+@font-face {
+  font-family: 'clash';
+  font-style: normal;
+  src: url('/fonts/clashDisplay/ClashDisplay-Variable.ttf');
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
   font-family: 'clash', sans-serif;
 }
 
@@ -18,11 +19,6 @@ body {
   }
 }
 
-@font-face {
-  font-family: 'clash';
-  font-style: normal;
-  src: url('/fonts/clashDisplay/ClashDisplay-Variable.ttf');
-}
 
 .number {
   font-family: 'Poppins', sans-serif !important;
