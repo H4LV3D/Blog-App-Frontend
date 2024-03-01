@@ -13,7 +13,7 @@ const Author = ({ selectedBlog }: Props) => {
   return (
     <>
       <div className="min-h-[40vh] bg-[#f7f7f7] dark:bg-neutral-800 w-full mt-10">
-        <div className="py-10 md:container w-full sm:w-[450px] md:w-[650px] lg:w-[700px] mx-auto px-8 xs:px-0">
+        <div className="py-10 md:container w-full sm:w-[450px] md:w-[650px] lg:w-[700px] mx-auto px-8 xs:px-6">
           <div className="sm:flex items-center justify-between dark:text-neutral-400">
             <div className="left mb-3 sm:mb-0">
               <div className="h-20 w-20 flex items-center justify-center rounded-[50%]">
@@ -51,7 +51,7 @@ const Author = ({ selectedBlog }: Props) => {
             <h3 className="text-2xl font-[600] dark:text-neutral-400 ">
               Start Writing Today
             </h3>
-            <p className="max-w-lg ">
+            <p className="max-w-lg tracking-wider ">
               Get started with writing today and share your thoughts with the
               world. You can also get paid for your work. Click the button below
             </p>
