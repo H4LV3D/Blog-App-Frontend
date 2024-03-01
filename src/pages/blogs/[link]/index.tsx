@@ -76,7 +76,7 @@ const Blog = ({}: Props) => {
         selectedBlog?.title && (
           <ViewLayout>
             <div className="bg-white dark:bg-[#191919] min-h-screen w-full">
-              <div className="md:container mx-auto xs:px-0 px-8 ">
+              <div className="md:container mx-auto xs:px-6 ">
                 <div className="font-raleway w-full sm:w-[450px] md:w-[650px] lg:w-[700px] mx-auto mt-20">
                   <div className="flex justify-between items-center ">
                     <Link href={`/blogs`}>
@@ -123,7 +123,7 @@ const Blog = ({}: Props) => {
 
               <Author selectedBlog={selectedBlog} />
 
-              <div className="md:container sm:w-[450px] md:w-[650px] lg:w-[700px] mx-auto xs:px-0 px-8 mt-10 pb-6">
+              <div className="md:container sm:w-[450px] md:w-[650px] lg:w-[700px] mx-auto xs:px-6 mt-10 pb-6">
                 <Subscribe />
               </div>
             </div>
