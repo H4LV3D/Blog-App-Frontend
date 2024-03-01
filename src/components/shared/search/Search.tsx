@@ -34,10 +34,10 @@ function SearchBox({ blogs }: Props) {
   return (
     <>
       <div className="w-full relative">
-        <div className="group relative w-full">
+        <div className="group relative w-full flex items-center ">
           <input
             type="text"
-            className="py-3.5 px-4 w-full sm:w-[350px] md:w-[400px] rounded-l-lg text-sm sm:text-base border dark:bg-transparent hover:border-neutral-600 dark:border-neutral-800 dark:hover:border-neutral-800 focus:outline-none dark:text-white focus:border-black dark:focus:border-neutral-700 font-raleway placeholder-neutral-400"
+            className="py-3.5 px-4 w-full  md:w-[400px] rounded-l-lg text-sm sm:text-base border dark:bg-transparent hover:border-neutral-600 dark:border-neutral-800 dark:hover:border-neutral-800 focus:outline-none dark:text-white focus:border-black dark:focus:border-neutral-700 font-raleway placeholder-neutral-400"
             placeholder="Search key phrases, titles, words"
             value={searchQuery}
             onChange={handleInputChange}
