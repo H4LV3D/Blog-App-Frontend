@@ -12,14 +12,7 @@ import { getAvatarId, login } from "@/utils/requests/auth";
 import SuccessNotification from "@/components/Notifications/successNotification";
 import ErrorNotification from "@/components/Notifications/ErrorNotification";
 import { useRouter } from "next/navigation";
-
-import { notifications } from "@mantine/notifications";
-import {
-  increaseAuthStep,
-  selectAuthStep,
-  setAuthStepSelectedEmail,
-} from "@/store/slices/authStep/AuthStepSlice";
-import ShowNotification from "@/components/Notifications/ShowNotification";
+import { selectAuthStep } from "@/store/slices/authStep/AuthStepSlice";
 
 type Props = {
   setNotify: (notify: boolean) => void;
@@ -72,24 +65,30 @@ function LoginForm({}: Props) {
       return res;
     },
     onSuccess: (data) => {
+      SuccessNotification({
+        title: "Login Successful",
+        message: data.data.message ?? "You have successfully logged in",
+      });
       dispatch(loginUser(data.data));
-      // if (!data.data.emailVerified) {
-      //   dispatch(
-      //     selectAuthStep({
-      //       direction: "next",
-      //       step: 1,
-      //       selectedEmail: data.data.user.email,
-      //     })
-      //   );
-      //   router.push("/signup");
-      // } else {
-      // }
+      if (!data.data.emailVerified) {
+        dispatch(
+          selectAuthStep({
+            direction: "next",
+            step: 1,
+            selectedEmail: data.data.user.email,
+          })
+        );
+        router.push("/signup");
+      } else {
+      }
       router.push("/dashboard");
-      ShowNotification(data.data.message);
     },
     onError: (error) => {
-      // @ts-ignore
-      ShowNotification(error.response.data.message);
+      ErrorNotification({
+        title: "An error occurred",
+        // @ts-ignore
+        message: error.response.data.message,
+      });
     },
   });
 
