@@ -16,9 +16,8 @@ const SuccessNotification = ({ title, message }: Props) => {
     style: notificationStyles,
     //   @ts-ignore
     styles: notificationStyles2,
-    color: "black",
+    color: "#000",
     radius: 10,
-    shadow: "sm",
   });
   return;
 };
