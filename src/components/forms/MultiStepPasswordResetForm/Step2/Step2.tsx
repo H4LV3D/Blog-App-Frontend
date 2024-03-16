@@ -13,6 +13,9 @@ import { MultiStepPasswordResetFormInputs } from "../MultiStepPasswordResetForm.
 import PrimaryButton from "@/components/shared/buttons/Primary";
 import { useMutation } from "@tanstack/react-query";
 import { showNotification } from "@mantine/notifications";
+import SuccessNotification from "@/components/Notifications/successNotification";
+import { Notification } from "@mantine/core";
+import ErrorNotification from "@/components/Notifications/ErrorNotification";
 
 interface Props {}
 
@@ -73,6 +76,17 @@ const Step2: React.FC<Props> = ({}) => {
     try {
       setResendingEmail(true);
       const res = await resendOtp(selectedEmail);
+      if (res.status === 200) {
+        SuccessNotification({
+          title: "OTP Resent",
+          message: res.data.message,
+        });
+      } else {
+        ErrorNotification({
+          title: "Error",
+          message: res.data.message,
+        });
+      }
     } catch {
     } finally {
       setResendingEmail(false);
@@ -92,13 +106,19 @@ const Step2: React.FC<Props> = ({}) => {
       return res;
     },
     onSuccess: (data) => {
-      showNotification(data.data.message);
+      SuccessNotification({
+        title: "Success",
+        message: data.data.message,
+      });
       dispatch(increasePasswordRecoveryStep());
     },
     onError: (error) => {
       console.log(error);
-      // @ts-ignore
-      showNotification(error.response.data.message);
+      ErrorNotification({
+        title: "Error",
+        // @ts-ignore
+        message: error?.response.data.message,
+      });
     },
   });
 
@@ -107,7 +127,7 @@ const Step2: React.FC<Props> = ({}) => {
       <div className="mb-4">
         <h1 className="mb-1 font-semibold text-[1.5rem]">Enter OTP</h1>
         <p className="text-sm">
-          Enter the 4-digit code that we sent to your email
+          Enter the 6-digit code that we sent to your email
         </p>
       </div>
       <div className="grid gap-[2rem] w-full sm:min-w-[350px] mb-8">

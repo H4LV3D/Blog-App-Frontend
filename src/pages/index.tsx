@@ -1,8 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "@/components/shared/Navbar/Navbar";
 import pageData from "@/data/index.json";
-import Genres from "@/components/home/Genres";
 import Generations from "@/components/home/Generations";
 import Collaborative from "@/components/home/Collaborative";
 import Review from "@/components/home/Reviews";
@@ -32,7 +31,7 @@ export default function Home({}: {}) {
               line1: "Information",
               line2: "at your Finger Tips.",
             }}
-            text="Ready to learn more? Dive into a world of playful, exciting, and interesting experience of my personal journey in the world of Tech."
+            text="This is where your experiences come to life through the power of words. Explore, share, and connect with others on a platform designed for your unique voice. Write about your experience or read others!"
             data={blogs}
           />
 

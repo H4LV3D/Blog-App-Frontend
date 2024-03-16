@@ -23,7 +23,7 @@ const Banner = ({ heading, text, data }: Props) => {
             {heading.line1}
             <br className="xs:hidden md:block" /> {heading.line2}
           </h1>
-          <p className="text-sm sm:text-base md:text-lg font-raleway font-normal dark:text-neutral-400 text-gray-800">
+          <p className="text-sm sm:text-base md:text-lg font-normal dark:text-neutral-400 text-gray-800 font-raleway ">
             {text}
           </p>
           <div className="space-x-4 ">

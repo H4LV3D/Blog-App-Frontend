@@ -16,12 +16,9 @@ const config: Config = {
       lg: "976px",
       xl: "1440px",
     },
-  },
-  extend: {
     fontFamily: {
-      oleo: ["oleo", "serif"],
-      clash: ["clash", "sans-serif"],
-      raleway: ["raleway", "sans-serif"],
+      raleway: ["Raleway", "sans-serif"],
+      clash: ["Clash", "sans-serif"],
     },
   },
   plugins: [],

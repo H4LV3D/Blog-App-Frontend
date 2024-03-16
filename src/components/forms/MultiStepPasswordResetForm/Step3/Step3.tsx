@@ -27,6 +27,7 @@ const Step3: React.FC<Props> = ({}) => {
   const email = useAppSelector(
     (state) => state.passwordRecoveryStep.selectedEmail
   );
+  const avatarId = useAppSelector((state) => state.user.avatarId);
   const {
     register,
     formState: { errors },
@@ -50,7 +51,7 @@ const Step3: React.FC<Props> = ({}) => {
 
   const passwordResetMutation = useMutation({
     mutationFn: async () => {
-      const res = await resetPassword(email, password);
+      const res = await resetPassword(email, password, avatarId as number);
       return res;
     },
     onSuccess: (data) => {

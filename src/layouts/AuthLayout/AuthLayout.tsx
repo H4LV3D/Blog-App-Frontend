@@ -39,7 +39,7 @@ function AuthLayout({ children, form }: Props) {
                 <Link href="/">
                   <h3 className=" font-[700] text-4xl mb-6">Blogger</h3>
                 </Link>
-                <div className="w-[275px] h-[330px] border dark:border-neutral-700 rounded-lg hover:shadow-xl ">
+                <div className="w-[275px] h-[330px] p-4 border dark:border-neutral-700 rounded-lg hover:shadow-xl ">
                   {avatarId === null ? (
                     <div className="w-full h-[330px] flex items-center justify-center relative">
                       <ButtonLoader color="#000" />
@@ -55,7 +55,7 @@ function AuthLayout({ children, form }: Props) {
                     />
                   )}
                 </div>
-                <p className="w-1/2 mx-auto mt-8 text-center text-sm sm:text-base md:text-xl font-normal text-gray-700 dark:text-neutral-400 font-raleway">
+                <p className="max-w-md mx-auto mt-8 text-center text-sm sm:text-base md:text-xl font-normal text-gray-700 dark:text-neutral-400 font-raleway">
                   {form === "login"
                     ? avatarId === null
                       ? "Enter your email to see your custom illustration"

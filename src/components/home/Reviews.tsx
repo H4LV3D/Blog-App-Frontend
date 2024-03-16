@@ -1,7 +1,8 @@
+import Image from "next/image";
 import React from "react";
 
 type Props = {
-  reviews: Review[]; // You need to pass an array of Review objects as a prop
+  reviews: Review[];
 };
 
 type Review = {
@@ -14,10 +15,13 @@ const randomNumber = () => Math.floor(Math.random() * 15) + 1;
 
 function ReviewComponent({ reviews }: Props) {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center py-8 mt-8">
-      <div className="flex justify-center items-center">
-        <h4 className="text-3xl font-[700] dark:text-neutral-400 text-black">
-          Our Community.
+    <div className="min-h-[70vh] flex flex-col justify-center items-center py-8 mt-8">
+      <div className="flex flex-col justify-center items-center">
+        <p className="text-xl dark:text-neutral-400 text-black max-w-md text-center  ">
+          Reviews
+        </p>
+        <h4 className="text-5xl font-[700] dark:text-neutral-400 text-black max-w-md text-center ">
+          Our Community!
         </h4>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 mx-auto xl:w-[950px] gap-6 my-4 sm:my-8">
@@ -27,11 +31,14 @@ function ReviewComponent({ reviews }: Props) {
             key={index}
           >
             <div className="flex md:flex-row lg:flex-col items-center lg:items-start space-x-3 lg:space-x-0">
-              <img
+              <Image
                 src={`/assets/Memoji/male/Memoji-${randomNumber()}.png`}
-                className="w-[60px] rounded-rull"
+                className="rounded-rull"
                 alt="An SVG illustration of a person dressed in different clothings"
+                width={60}
+                height={60}
               />
+
               <div>
                 <p className="font-raleway font-medium text-2xl line-clamp-1 dark:text-neutral-500">
                   {review.name}

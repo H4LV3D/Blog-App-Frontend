@@ -1,16 +1,32 @@
 @font-face {
-  font-family: 'clash';
+  font-family: "raleway";
+  src: url("/assets/fonts/Raleway/Raleway-VariableFont_wght.ttf");
+  font-weight: 100 900;
   font-style: normal;
-  src: url('/fonts/clashDisplay/ClashDisplay-Variable.ttf');
 }
-
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'clash', sans-serif;
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/assets/fonts/Raleway/Raleway-VariableFont_wght.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Clash";
+  src: url("/assets/fonts/ClashDisplay/ClashDisplay-Variable.ttf");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  font-family: 'Clash', sans-serif;
 }
 
 @layer utilities {
@@ -18,7 +34,6 @@ body {
     text-wrap: balance;
   }
 }
-
 
 .number {
   font-family: 'Poppins', sans-serif !important;

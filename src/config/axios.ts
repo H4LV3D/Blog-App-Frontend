@@ -18,7 +18,3 @@ export const appAxios = axios.create({
   baseURL: getBaseURL(),
   withCredentials: true,
 });
-
-export const cloudinaryAxios = axios.create({
-  baseURL: `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-});

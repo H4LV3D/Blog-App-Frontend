@@ -61,9 +61,14 @@ export const verifyOtp = (email: string, otp: number) => {
   });
 };
 
-export const resetPassword = (email: string, password: string) => {
+export const resetPassword = (
+  email: string,
+  password: string,
+  avatarId: number
+) => {
   return appAxios.post("/auth/reset-password", {
     email: email,
     newPassword: password,
+    avatarId: avatarId,
   });
 };

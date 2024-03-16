@@ -10,36 +10,37 @@ import { useRouter } from "next/router";
 import ButtonLoader from "@/components/shared/ButtonLoader/ButtonLoader";
 import Subscribe from "@/components/home/Subscribe";
 import Link from "next/link";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { deleteBlog, getBlog } from "@/utils/requests/blog";
+import { useMutation } from "@tanstack/react-query";
+import { deleteBlog, getBlog, getBlogs } from "@/utils/requests/blog";
 import { newBlog } from "@/typings/blog";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
 import { fetchBlog, setShowEditModal } from "@/store/slices/blog/blogSlice";
 import ShowNotification from "@/components/Notifications/ShowNotification";
+import type { GetStaticProps, GetStaticPaths } from "next";
 
-type Props = {};
+type Props = {
+  selectedBlog: newBlog;
+};
 
-import type { InferGetStaticPropsType, GetStaticProps } from "next";
-
-const Blog = ({}: Props) => {
+const Blog = ({ selectedBlog }: Props) => {
   const router = useRouter();
   const link = router.query.link;
   const [loading, setLoading] = React.useState(false);
-  const [selectedBlog, setSelectedBlog] = React.useState<newBlog>();
+  // const [selectedBlog, setSelectedBlog] = React.useState<newBlog>();
   const user = useAppSelector((state) => state.user.data);
   const dispatch = useAppDispatch();
 
-  const { isLoading } = useQuery({
-    queryKey: [`blog-${link}`],
-    queryFn: async () => {
-      const blog = await getBlog(link as string);
-      dispatch(setSelectedBlog(blog));
-      setSelectedBlog(blog);
-      return blog;
-    },
-    enabled: true,
-  });
+  // const { isLoading } = useQuery({
+  //   queryKey: [`blog-${link}`],
+  //   queryFn: async () => {
+  //     const blog = await getBlog(link as string);
+  //     // dispatch(setSelectedBlog(blog));
+  //     // setSelectedBlog(blog);
+  //     return blog;
+  //   },
+  //   enabled: true,
+  // });
 
   const deleteMutation = useMutation({
     mutationFn: async () => {
@@ -55,13 +56,13 @@ const Blog = ({}: Props) => {
     },
   });
 
-  React.useEffect(() => {
-    if (selectedBlog === undefined || selectedBlog === null) {
-      setLoading(true);
-    } else {
-      setLoading(false);
-    }
-  }, [selectedBlog]);
+  // React.useEffect(() => {
+  //   if (selectedBlog === undefined || selectedBlog === null) {
+  //     setLoading(true);
+  //   } else {
+  //     setLoading(false);
+  //   }
+  // }, [selectedBlog]);
 
   return (
     <>
@@ -131,6 +132,36 @@ const Blog = ({}: Props) => {
         )}
     </>
   );
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await getBlogs();
+  const blogs = await res;
+
+  const paths = blogs.map((blog: any) => ({
+    params: { link: blog._id.toString() },
+  }));
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  if (!params || typeof params.link !== "string") {
+    return {
+      notFound: true,
+    };
+  }
+
+  const res = await getBlog(params.link);
+  const blog = await res;
+  return {
+    props: {
+      selectedBlog: blog,
+    },
+  };
 };
 
 export default Blog;

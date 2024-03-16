@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import pageData from "@/data/index.json";
 import { newBlog } from "@/typings/blog";
 import Link from "next/link";
 import Image from "next/image";

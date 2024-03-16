@@ -63,11 +63,11 @@ function Footer({}: Props) {
   return (
     <>
       <div className="w-full font-raleway bg-neutral-100 py-20">
-        <div className="px-6 lg:px-0 md:container mx-auto xl:w-[1240px]">
+        <div className="px-6 lg:px-0 md:container mx-auto lg:w-[950px]">
           <div className="sm:flex flex-row lg:grid sm:grid-cols-2 mb-8">
             <div className="w-full">
               <h3 className=" font-[700] text-4xl">Blogger</h3>
-              <p className="text-base lg:text-lg font-[400] mt-3 text-gray-800 lg:pr-6 lg:max-w-md tracking-wider ">
+              <p className="text-base lg:text-lg font-[400] mt-3 text-gray-800 lg:pr-8 lg:max-w-md font-raleway ">
                 Ready to learn more? Dive into a world of playful, exciting, and
                 interesting experience of my personal journey in the world of
                 Tech.
@@ -132,10 +132,10 @@ function Footer({}: Props) {
                 <a
                   href={item.link}
                   key={index}
-                  className="border p-1 rounded-md hover:border-black dark:hover:border-white"
+                  className=" p-1 rounded-md hover:border-black dark:hover:border-white"
                 >
-                  <div className="group relative font-raleway font-normal cursor-pointer dark:text-white text-black pr-8 hover:text-xl py-3.5">
-                    <i className={`${item.icon} fa-lg fa-fw`}></i>
+                  <div className="group relative font-raleway font-normal cursor-pointer dark:text-white text-black hover:text-xl p-2">
+                    <i className={`${item.icon} fa-xl fa-fw`}></i>
                     <div className="opacity-0 bg-black text-white text-center text-xs font-raleway rounded-lg py-2 absolute z-40 group-hover:opacity-100 bottom-full -left-1/2 px-4 pointer-events-none">
                       {item.title}
                     </div>

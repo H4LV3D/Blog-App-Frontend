@@ -1,21 +1,30 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import pageData from "@/data/index.json";
+import React from "react";
 import DisplayCard from "@/components/shared/DisplayCard/DisplayCard";
 import DisplayNavBar from "@/components/shared/DisplayNavBar/DisplayNavBar";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { setArrangement } from "@/store/slices/arrangement/arrangementSlice";
 import PageLayout from "@/layouts/PageLayout/PageLayout";
 import MaxWidthProvider from "@/components/shared/MaxWidthProvider/MaxWidthProvider";
 import SearchBox from "@/components/shared/search/Search";
-import { useMutation } from "@tanstack/react-query";
 import { getBlogs } from "@/utils/requests/blog";
+import { newBlog } from "@/typings/blog";
 import ButtonLoader from "@/components/shared/ButtonLoader/ButtonLoader";
 
-type Props = {};
+type Props = {
+  blogs: newBlog[];
+};
 
-const Blogs = ({}: Props) => {
+export const getStaticProps = async () => {
+  const res = getBlogs();
+  const data = await res;
+  return {
+    props: {
+      blogs: data,
+    },
+  };
+};
+
+const Blogs = ({ blogs }: Props) => {
   const dispatch = useAppDispatch();
   const arrangement = useAppSelector((state) => state.arrangement.value);
 
@@ -26,37 +35,39 @@ const Blogs = ({}: Props) => {
     { text: "Feed", link: "#feed" },
   ];
 
-  const handleResize = () => {
-    if (window.innerWidth < 768) dispatch(setArrangement("cards"));
-  };
+  // const handleResize = () => {
+  //   if (window.innerWidth < 768) dispatch(setArrangement("cards"));
+  // };
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
-  const [blogs, setBlogs] = useState([]);
+  // const [blogs, setBlogs] = useState([]);
 
-  const mutation = useMutation({
-    mutationFn: async () => {
-      const res = getBlogs();
-      return res;
-    },
-    onSuccess: (data) => {
-      setBlogs(data);
-    },
-    onError: (error) => {
-      console.log(error);
-    },
-  });
+  // const mutation = useMutation({
+  //   mutationFn: async () => {
+  //     const res = getBlogs();
+  //     return res;
+  //   },
+  //   onSuccess: (data) => {
+  //     // setBlogs(data);
+  //     console.log(data);
+  //   },
+  //   onError: (error) => {
+  //     console.log(error);
+  //   },
+  // });
 
-  useEffect(() => {
-    mutation.mutate();
-  }, []);
+  // useEffect(() => {
+  //   mutation.mutate();
+  // }, []);
 
-  const loading = mutation.isPending;
+  // const loading = mutation.isPending;
+  const loading = false;
 
   return (
     <>
