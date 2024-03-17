@@ -360,29 +360,20 @@
   ],
   "socials": [
     {
-      "title": "LinkedIn",
-      "link": "https://www.linkedin.com/in/toluwalope-akinkunmi-a23b02167/",
-      "icon": "fab fa-linkedin"
+      "title": "Instagram",
+      "link": "https://www.instagram.com/__moyin_",
+      "icon": "fab fa-instagram"
     },
+
     {
       "title": "Twitter",
       "link": "https://twitter.com/kinkunmz_",
       "icon": "fab fa-twitter"
     },
     {
-      "title": "Github",
-      "link": "https://github.com/H4LV3D",
-      "icon": "fab fa-github"
-    },
-    {
-      "title": "Instagram",
-      "link": "https://www.instagram.com/__moyin_",
-      "icon": "fab fa-instagram"
-    },
-    {
-      "title": "Telegram",
-      "link": "https://t.me/H4LV3D",
-      "icon": "fab fa-telegram"
+      "title": "LinkedIn",
+      "link": "https://www.linkedin.com/in/toluwalope-akinkunmi-a23b02167/",
+      "icon": "fab fa-linkedin"
     }
   ],
   "reviews": [
