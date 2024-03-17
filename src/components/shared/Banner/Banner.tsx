@@ -26,14 +26,14 @@ const Banner = ({ heading, text, data }: Props) => {
           <p className="text-sm sm:text-base md:text-lg font-normal dark:text-neutral-400 text-gray-800 font-raleway ">
             {text}
           </p>
-          <div className="space-x-4 ">
+          <div className="space-x-4 mt-8 ">
             <Link href="/blogs/create">
-              <button className="h-[3.5rem] w-[10rem] bg-black text-white rounded-[0.5rem] font-[500] ">
+              <button className="h-[3.5rem] w-[12rem] bg-black text-white rounded-[0.5rem] font-[500] tracking-wide ">
                 Start Writing
               </button>
             </Link>
             <Link href={`/blogs `}>
-              <button className="h-[3.5rem] w-[10rem] border border-black text-black rounded-[0.5rem] font-[500] ">
+              <button className="h-[3.5rem] w-[12rem] border border-black text-black rounded-[0.5rem] font-[500] ">
                 View Blogs
               </button>
             </Link>
