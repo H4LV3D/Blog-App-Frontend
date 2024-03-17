@@ -19,11 +19,17 @@ const blogSlice = createSlice({
   name: "blog",
   initialState: initialState,
   reducers: {
-    fetchBlogs: (state, action: PayloadAction<newBlog[]>) => {
+    setBlogs: (state, action: PayloadAction<newBlog[]>) => {
       state.blogs = action.payload;
     },
-    fetchBlog: (state, action: PayloadAction<newBlog>) => {
+    clearBlogs: (state) => {
+      state.blogs = null;
+    },
+    setBlog: (state, action: PayloadAction<newBlog>) => {
       state.blog = action.payload;
+    },
+    clearBlog: (state) => {
+      state.blog = null;
     },
     setSelectedBlog: (state, action: PayloadAction<newBlog>) => {
       state.selectedBlog = action.payload;
@@ -38,8 +44,8 @@ const blogSlice = createSlice({
 });
 
 export const {
-  fetchBlogs,
-  fetchBlog,
+  setBlogs,
+  setBlog,
   setSelectedBlog,
   setShowEditModal,
   hideShowEditModal,
