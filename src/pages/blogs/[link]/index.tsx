@@ -15,7 +15,7 @@ import { deleteBlog, getBlog, getBlogs } from "@/utils/requests/blog";
 import { newBlog } from "@/typings/blog";
 import { useAppSelector } from "@/hooks/useAppSelector";
 import { useAppDispatch } from "@/hooks/useAppDispatch";
-import { fetchBlog, setShowEditModal } from "@/store/slices/blog/blogSlice";
+import { setBlog, setShowEditModal } from "@/store/slices/blog/blogSlice";
 import ShowNotification from "@/components/Notifications/ShowNotification";
 import type { GetStaticProps, GetStaticPaths } from "next";
 
@@ -90,7 +90,7 @@ const Blog = ({ selectedBlog }: Props) => {
                         <button
                           onClick={() => {
                             dispatch(setShowEditModal());
-                            dispatch(fetchBlog(selectedBlog));
+                            dispatch(setBlog(selectedBlog));
                           }}
                           className="my-2 text-sm text-neutral-500 hover:text-black border hover:border-black h-[2rem] px-6 rounded-[0.25rem] font-[500] "
                         >
